@@ -3,7 +3,18 @@ class puzzle:
     seed = 0
     def __init__(self, type):
         self.type = type
-        #Make the cube in its solved state, Maybe use seperate class for tiles
+        self.cubeMatrix = []
+        #Makes a 3x3x3 cube represented as a 3D matrix
+        for i in range(type):
+            xY = []
+            for j in range(type):
+                xZ = []
+                for k in range(type):
+                    xZ.append("tile")
+                xY.append(xZ)
+            self.cubeMatrix.append(xY)
+        print(self.cubeMatrix)
+        #Make cube surface and attach it to matrix
 
     def scramble(self, type):
         pass
