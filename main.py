@@ -15,9 +15,22 @@ class puzzle:
         pass
 
 #Tile class as super with different types as a sub class
+class tile:
+    pass
+
+class edge(tile):
+    pass
+
+class center(tile):
+    pass
+
+class corner(tile):
+    pass
+
+
 
 def main():
-    pass
+    puzzle1 = puzzle(3)
 
 if __name__ == '__main__':
     main()
