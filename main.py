@@ -4,29 +4,30 @@ class puzzle:
     def __init__(self, type):
         self.type = type
         self.cubeMatrix = []
-        #Makes a cube represented as a 3D matrix
-        for i in range(type):
-            xY = []
-            for j in range(type):
-                xZ = []
-                for k in range(type):
-                    xZ.append("tile")
-                xY.append(xZ)
-            self.cubeMatrix.append(xY)
-        #Make cube surface with different tile types and attach it to the 3d cube (Like attaching stickers)
-        #Do it in rings with front, center, then back. Do not include core of cube.
-        #Front
-        tileDict = {"corner": [], "edge": [], "center": []}
-        #Front Face
-        for face in enumerate(self.cubeMatrix):
-            for row in enumerate(face[1]):
-                for column in enumerate(row[1]):
-                    if face[0] == 0:
-                        print("0")
-                        pass
-                    if face == 1:
-                        #center
-                        pass
+        #Makes a cube represented as a 3D matrix with peice types
+        for d in range(type):
+            depth = []
+            for h in range(type):
+                height = []
+                for l in range(type):
+                    if d == 0 or d == 2:
+                        if (l == 0 or l == 2) and (h == 0 or h == 2):
+                            height.append("corner")
+                        elif l == 1 and h == 1:
+                            height.append("center")
+                        else:
+                            height.append("edge")
+                    else:
+                        if (l == 0 or l == 2) and (h == 0 or h == 2):
+                            height.append("edge")
+                        elif l == 1 and h == 1:
+                            height.append("core")
+                        else:
+                            height.append("center")
+
+                depth.append(height)
+            self.cubeMatrix.append(depth)
+
         print(self.cubeMatrix)
 
     def scramble(self, type):
