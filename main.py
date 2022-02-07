@@ -10,15 +10,15 @@ class puzzle:
             for h in range(type):
                 height = []
                 for l in range(type):
-                    if d == 0 or d == 2:
-                        if (l == 0 or l == 2) and (h == 0 or h == 2):
+                    if d == 0 or d == type - 1:
+                        if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
                             height.append("corner")
                         elif l == 1 and h == 1:
                             height.append("center")
                         else:
                             height.append("edge")
                     else:
-                        if (l == 0 or l == 2) and (h == 0 or h == 2):
+                        if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
                             height.append("edge")
                         elif l == 1 and h == 1:
                             height.append("core")
@@ -41,7 +41,10 @@ class puzzle:
 
 #Tile class as super with different types as a sub class
 class tile:
-    pass
+    def __init__(self, depth, height, length):
+        self.depth = depth
+        self.height = height
+        self.length = length
 
 class edge(tile):
     pass
