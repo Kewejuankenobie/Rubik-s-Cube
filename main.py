@@ -1,4 +1,6 @@
 # Class describing the puzzle
+import math
+
 class puzzle:
     seed = 0
 
@@ -44,7 +46,7 @@ class puzzle:
 # Tile class as super with different types as a sub class
 class tile:
     colors = {"side1": "", "side2": "" , "side3" : ""}
-    rotationVector = (0, 0, 0)
+    rotationVector = [0.0, 0.0, 0.0] # In Radians with the default being front right bottom facing
     def __init__(self, depth, height, length):
         self.depth = depth
         self.height = height
@@ -54,13 +56,27 @@ class tile:
 class edge(tile):
     def __init__(self, depth, height, length):
         super().__init__(depth, height, length)
+        #For side 1
         if self.depth == 0:
             self.colors["side1"] = "green"
+            self.rotationVector[0] = 0.0
         elif self.depth == 2:
             self.colors["side1"] = "blue"
+            self.rotationVector[0] = math.pi
         else:
-            pass
+            if self.height == 0 or self.height == 2:
+                if self.length == 0:
+                    self.colors["side1"] = "orange"
+                    self.rotationVector[0] = (3 * math.pi) / 2
+                elif self.length == 2:
+                    self.colors["side1"] = "red"
+                    self.rotationVector[0] = math.pi / 2
+                    
+        #Side 2
+
+
         print(self.colors)
+        print(self.rotationVector)
 
 
 
@@ -79,7 +95,7 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    e = edge(0, 0, 1)
+    e = edge(1, 0, 2)
 
 
 if __name__ == '__main__':
