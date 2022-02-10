@@ -19,10 +19,11 @@ class puzzle:
                         elif l == 1 and h == 1:
                             height.append("center")
                         else:
-                            height.append("edge")
+                            print(d, h, l)
+                            height.append(edge(d, h, l))
                     else:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            height.append("edge")
+                            height.append(edge(d, h, l))
                         elif l == 1 and h == 1:
                             height.append("core")
                         else:
@@ -31,7 +32,7 @@ class puzzle:
                 depth.append(height)
             self.cubeMatrix.append(depth)
 
-        print(self.cubeMatrix)
+        print(self.cubeMatrix[0][0][1])
 
     def scramble(self, type):
         pass
@@ -73,24 +74,23 @@ class edge(tile):
                     self.rotationVector[0] = math.pi / 2
 
         #Side 2
-        if self.depth == 0 or self.depth == 2:
-            if self.height == 0:
-                self.colors["side2"] = "white"
-                self.rotationVector[1] = 0.0
-            elif self.height == 2:
-                self.colors["side2"] = "yellow"
-                self.rotationVector[1] = math.pi
-            else:
-                if self.length == 0:
-                    self.colors["side2"] = "orange"
-                    self.rotationVector[1] = math.pi / 2
-                elif self.length == 2:
-                    self.colors["side2"] = "red"
-                    self.rotationVector[1] = (3 * math.pi) / 2
+        #if self.depth == 0 or self.depth == 2:
+        if self.height == 0:
+            self.colors["side2"] = "white"
+            self.rotationVector[1] = 0.0
+        elif self.height == 2:
+            self.colors["side2"] = "yellow"
+            self.rotationVector[1] = math.pi
+        else:
+            if self.length == 0:
+                self.colors["side2"] = "orange"
+                self.rotationVector[1] = math.pi / 2
+            elif self.length == 2:
+                self.colors["side2"] = "red"
+                self.rotationVector[1] = (3 * math.pi) / 2
 
-
-        print(self.colors)
-        print(self.rotationVector)
+    def __repr__(self):
+        return f"Color {self.colors}, Rotation: {self.rotationVector}"
 
 
 
@@ -110,6 +110,8 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     e = edge(0, 1, 2)
+    print(e)
+    print(edge(1, 2, 0))
 
 
 if __name__ == '__main__':
