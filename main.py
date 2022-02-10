@@ -17,22 +17,25 @@ class puzzle:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
                             height.append("corner")
                         elif l == 1 and h == 1:
-                            height.append("center")
+                            height.append(center(d, h, l))
                         else:
                             print(d, h, l)
-                            height.append(edge(d, h, l))
+                            print(edge(d,h,l))
+                            e = edge(d, h, l)
+                            height.append(e)
                     else:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            height.append(edge(d, h, l))
+                            print(edge(d, h, l))
+                            e = edge(d, h, l)
+                            height.append(e)
                         elif l == 1 and h == 1:
                             height.append("core")
                         else:
-                            height.append("center")
+                            height.append(center(d, h, l))
 
                 depth.append(height)
             self.cubeMatrix.append(depth)
-
-        print(self.cubeMatrix[0][0][1])
+        print(self.cubeMatrix)
 
     def scramble(self, type):
         pass
@@ -95,7 +98,26 @@ class edge(tile):
 
 
 class center(tile):
-    pass
+    def __init__(self, depth, height, length):
+        super().__init__(depth, height, length)
+        if self.depth == 0:
+            self.colors["side1"] = "green"
+            self.rotationVector[0] = 0.0
+        elif self.depth == 2:
+            self.colors["side1"] = "blue"
+            self.rotationVector[0] = math.pi
+        else:
+            if self.height == 0:
+                self.colors["side1"] = "white"
+            elif self.height == 2:
+                self.colors["side1"] = "yellow"
+            else:
+                if self.length == 0:
+                    self.colors["side1"] = "orange"
+                elif self.length == 2:
+                    self.colors["side1"] = "red"
+    def __repr__(self):
+        return f"Color {self.colors}, Rotation: {self.rotationVector}"
 
 
 class corner(tile):
