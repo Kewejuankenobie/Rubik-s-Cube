@@ -15,19 +15,14 @@ class puzzle:
                 for l in range(type):
                     if d == 0 or d == type - 1:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            height.append("corner")
+                            height.append(corner(d, h, l))
                         elif l == 1 and h == 1:
                             height.append(center(d, h, l))
                         else:
-                            print(d, h, l)
-                            print(edge(d,h,l))
-                            e = edge(d, h, l)
-                            height.append(e)
+                            height.append(edge(d, h, l))
                     else:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            print(edge(d, h, l))
-                            e = edge(d, h, l)
-                            height.append(e)
+                            height.append(edge(d, h, l))
                         elif l == 1 and h == 1:
                             height.append("core")
                         else:
@@ -64,34 +59,26 @@ class edge(tile):
         #For side 1
         if self.depth == 0:
             self.colors["side1"] = "green"
-            self.rotationVector[0] = 0.0
         elif self.depth == 2:
             self.colors["side1"] = "blue"
-            self.rotationVector[0] = math.pi
         else:
             if self.height == 0 or self.height == 2:
                 if self.length == 0:
                     self.colors["side1"] = "orange"
-                    self.rotationVector[0] = (3 * math.pi) / 2
                 elif self.length == 2:
                     self.colors["side1"] = "red"
-                    self.rotationVector[0] = math.pi / 2
 
         #Side 2
         #if self.depth == 0 or self.depth == 2:
         if self.height == 0:
             self.colors["side2"] = "white"
-            self.rotationVector[1] = 0.0
         elif self.height == 2:
             self.colors["side2"] = "yellow"
-            self.rotationVector[1] = math.pi
         else:
             if self.length == 0:
                 self.colors["side2"] = "orange"
-                self.rotationVector[1] = math.pi / 2
             elif self.length == 2:
                 self.colors["side2"] = "red"
-                self.rotationVector[1] = (3 * math.pi) / 2
 
     def __repr__(self):
         return f"Color {self.colors}, Rotation: {self.rotationVector}"
@@ -103,10 +90,8 @@ class center(tile):
         super().__init__(depth, height, length)
         if self.depth == 0:
             self.colors["side1"] = "green"
-            self.rotationVector[0] = 0.0
         elif self.depth == 2:
             self.colors["side1"] = "blue"
-            self.rotationVector[0] = math.pi
         else:
             if self.height == 0:
                 self.colors["side1"] = "white"
@@ -122,7 +107,25 @@ class center(tile):
 
 
 class corner(tile):
-    pass
+    def __init__(self, depth, height, length):
+        super().__init__(depth, height, length)
+        #Side 1
+        if self.depth == 0:
+            self.colors["side1"] = "green"
+        elif self.depth == 2:
+            self.colors["side1"] = "blue"
+        #Side 2
+        if self.height == 0:
+            self.colors["side2"] = "white"
+        elif self.height == 2:
+            self.colors["side2"] = "yellow"
+        #Side 3
+        if self.length == 0:
+            self.colors["side3"] = "orange"
+        elif self.length == 2:
+            self.colors["side3"] = "red"
+    def __repr__(self):
+        return f"Color {self.colors}, Rotation: {self.rotationVector}"
 
 
 # Actual Window
@@ -132,12 +135,6 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    cList = []
-    e = edge(0, 1, 2)
-    cList.append(e)
-    e2 = edge(1, 2, 0)
-    cList.append(e2)
-    print(cList)
 
 
 if __name__ == '__main__':
