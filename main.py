@@ -49,12 +49,13 @@ class puzzle:
 
 # Tile class as super with different types as a sub class
 class tile:
-    colors = {"side1": "", "side2": "" , "side3" : ""}
-    rotationVector = [0.0, 0.0, 0.0] # In Radians with the default being front right bottom facing
+    # In Radians with the default being front right bottom facing
     def __init__(self, depth, height, length):
         self.depth = depth
         self.height = height
         self.length = length
+        self.colors = {"side1": "", "side2": "", "side3": ""}
+        self.rotationVector = [0.0, 0.0, 0.0]
 
 
 class edge(tile):
@@ -131,9 +132,12 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
+    cList = []
     e = edge(0, 1, 2)
-    print(e)
-    print(edge(1, 2, 0))
+    cList.append(e)
+    e2 = edge(1, 2, 0)
+    cList.append(e2)
+    print(cList)
 
 
 if __name__ == '__main__':
