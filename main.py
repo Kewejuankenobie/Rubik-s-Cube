@@ -138,15 +138,16 @@ class puzzle:
             self.cubeMatrix.append(depth)
         print(self.cubeMatrix)
 
-    def getSide(self, side, axis):
+    def getSide(self, axis, side):
         #included pieces
         piecesToMove = []
         #Use for R, L, and M
-        for d in self.cubeMatrix:
-            for h in d:
-                for l in enumerate(h):
-                    if l[0] == 2:
-                        piecesToMove.append(l[1])
+        if axis == 2:
+            for d in self.cubeMatrix:
+                for h in d:
+                    for l in enumerate(h):
+                        if l[0] == side:
+                            piecesToMove.append(l[1])
         print(piecesToMove)
         #Use for F, B, and S
 
@@ -177,7 +178,7 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.getSide(2, 2)
+    puzzle1.getSide(2, 0)
 
 
 if __name__ == '__main__':
