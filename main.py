@@ -138,22 +138,28 @@ class puzzle:
             self.cubeMatrix.append(depth)
         print(self.cubeMatrix)
 
-    def getSide(self, side):
+    def getSide(self, side, axis):
         #included pieces
         piecesToMove = []
+        #Use for R, L, and M
         for d in self.cubeMatrix:
             for h in d:
                 for l in enumerate(h):
                     if l[0] == 2:
                         piecesToMove.append(l[1])
         print(piecesToMove)
+        #Use for F, B, and S
+
+        #Use for U, D, and E
 
     def scramble(self, type):
         pass
 
     def doMove(self, move, type):
-        moveList = ["R", "L", "F", "B", "U", "D", "M", "E", "S"
-                    "R'", "L'", "F'", "B'", "U'", "D'", "M'", "E'", "S'"]
+        moveList = "RLMFBSUDER'L'M'F'B'S'U'D'E'"
+        #Get side
+        #Move side list, change rotation, if = 2pi, change back to 0
+        #Replace original pieces
 
 
     def rotateCube(self, dir, type):
@@ -171,7 +177,7 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.getSide(2)
+    puzzle1.getSide(2, 2)
 
 
 if __name__ == '__main__':
