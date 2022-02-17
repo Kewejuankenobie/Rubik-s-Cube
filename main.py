@@ -166,20 +166,34 @@ class puzzle:
                     for l in enumerate(h):
                         if l[0] == side:
                             piecesToMove.append(l[1])
-        print(piecesToMove)
+        return piecesToMove
 
     def scramble(self, type):
         pass
 
-    def doMove(self, move, type):
-        moveList = "RLMFBSUDER'L'M'F'B'S'U'D'E'"
+    def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
+        moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
+        moveList = moveList.split(" ")
         #Get side
+        if move in moveList:
+            if move == "R":
+                side = self.getSide(2, 2)
+                self.rotateCube(side, 1)
+                print(self.cubeMatrix)
+        else:
+            print("Enter a valid move")
         #Move side list, change rotation, if = 2pi, change back to 0
         #Replace original pieces
 
 
-    def rotateCube(self, dir, type):
-        pass
+    def rotateCube(self, side, dir): # rotates the actual side
+        for d in self.cubeMatrix:
+            for h in d:
+                for l in h:
+                    if l in side:
+                        l.rotation[2] += math.pi
+                        if l.rotation[2] > 2 * math.pi:
+                            l.rotation[2] = 0.0
 
 
 # Actual Window
@@ -193,7 +207,7 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.getSide(0, 0)
+    puzzle1.doMove("R")
 
 
 if __name__ == '__main__':
