@@ -141,17 +141,32 @@ class puzzle:
     def getSide(self, axis, side):
         #included pieces
         piecesToMove = []
+        #Use for U, D, and E
+        if axis == 0:
+            for d in self.cubeMatrix:
+                for h in enumerate(d):
+                    if h[0] == side:
+                        for l in h[1]:
+                            piecesToMove.append(l)
+
+        #Use for F, B, and S
+        elif axis == 1:
+            for d in enumerate(self.cubeMatrix):
+                print(d)
+                if d[0] == side:
+                    for h in d[1]:
+                        for l in h:
+                            piecesToMove.append(l)
+
+
         #Use for R, L, and M
-        if axis == 2:
+        elif axis == 2:
             for d in self.cubeMatrix:
                 for h in d:
                     for l in enumerate(h):
                         if l[0] == side:
                             piecesToMove.append(l[1])
         print(piecesToMove)
-        #Use for F, B, and S
-
-        #Use for U, D, and E
 
     def scramble(self, type):
         pass
@@ -178,7 +193,7 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.getSide(2, 0)
+    puzzle1.getSide(0, 0)
 
 
 if __name__ == '__main__':
