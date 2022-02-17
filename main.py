@@ -192,7 +192,7 @@ class puzzle:
                 for l in h:
                     if l in side:
                         l.rotation[2] += math.pi
-                        if l.rotation[2] > 2 * math.pi:
+                        if l.rotation[2] >= 2 * math.pi:
                             l.rotation[2] = 0.0
 
 
