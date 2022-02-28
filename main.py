@@ -180,6 +180,10 @@ class puzzle:
                 side = self.getSide(2, 2)
                 self.rotateCube(side, 1)
                 print(self.cubeMatrix)
+            elif move == "L":
+                side = self.getSide(2, 0)
+                self.rotateCube(side, -1)
+                print(self.cubeMatrix)
         else:
             print("Enter a valid move")
         #Move side list, change rotation, if = 2pi, change back to 0
@@ -191,8 +195,11 @@ class puzzle:
             for h in d:
                 for l in h:
                     if l in side:
-                        l.rotation[2] += math.pi
-                        if l.rotation[2] >= 2 * math.pi:
+                        if dir == 1:
+                            l.rotation[2] += math.pi / 2
+                        elif dir == -1:
+                            l.rotation[2] -= math.pi / 2
+                        if l.rotation[2] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
                             l.rotation[2] = 0.0
 
 
@@ -208,6 +215,7 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     puzzle1.doMove("R")
+    puzzle1.doMove("L")
 
 
 if __name__ == '__main__':
