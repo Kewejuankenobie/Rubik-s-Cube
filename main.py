@@ -138,33 +138,33 @@ class puzzle:
             self.cubeMatrix.append(depth)
         print(self.cubeMatrix)
 
-    def getSide(self, axis, side):
+    def getSide(self, posAxis): #(axis, side)
         #included pieces
         piecesToMove = []
         #Use for U, D, and E
-        if axis == 0:
+        if posAxis[0] == 0:
             for d in self.cubeMatrix:
                 for h in enumerate(d):
-                    if h[0] == side:
+                    if h[0] == posAxis[1]:
                         for l in h[1]:
                             piecesToMove.append(l)
 
         #Use for F, B, and S
-        elif axis == 1:
+        elif posAxis[0] == 1:
             for d in enumerate(self.cubeMatrix):
                 print(d)
-                if d[0] == side:
+                if d[0] == posAxis[1]:
                     for h in d[1]:
                         for l in h:
                             piecesToMove.append(l)
 
 
         #Use for R, L, and M
-        elif axis == 2:
+        elif posAxis[0] == 2:
             for d in self.cubeMatrix:
                 for h in d:
                     for l in enumerate(h):
-                        if l[0] == side:
+                        if l[0] == posAxis[1]:
                             piecesToMove.append(l[1])
         return piecesToMove
 
@@ -172,18 +172,24 @@ class puzzle:
         pass
 
     def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
+        def getMove(m):
+            switcher = {
+                "R": ((2, 2), 1),
+                "R'": ((2, 2), -1),
+                "L": ((2, 0), -1),
+                "L'": ((2, 0), -1)
+            }
+            return(switcher.get(m))
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
         moveList = moveList.split(" ")
         #Get side
         if move in moveList:
-            if move == "R":
-                side = self.getSide(2, 2)
-                self.rotateCube(side, 1)
-                print(self.cubeMatrix)
-            elif move == "L":
-                side = self.getSide(2, 0)
-                self.rotateCube(side, -1)
-                print(self.cubeMatrix)
+            moveInProgress = getMove(move)
+            side = self.getSide(moveInProgress[0])
+            self.rotateCube(side, moveInProgress[1])
+            print(self.cubeMatrix)
+            #get side, rotate cube, print  right at the end
+
         else:
             print("Enter a valid move")
         #Move side list, change rotation, if = 2pi, change back to 0
