@@ -10,6 +10,8 @@ class tile:
         self.length = length
         self.colors = {"side1": "", "side2": "", "side3": ""}
         self.rotation = [0.0, 0.0, 0.0]
+    def __repr__(self):
+        return "Undefined Or Core"
 
 #Rotation, 0 axis is up and down, 1 axis is front and back, 2 axis is left and right
 
@@ -130,7 +132,7 @@ class puzzle:
                         if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
                             height.append(edge(d, h, l))
                         elif l == 1 and h == 1:
-                            height.append("core")
+                            height.append(tile(d, h, l))
                         else:
                             height.append(center(d, h, l))
 
@@ -177,7 +179,9 @@ class puzzle:
                 "R": ((2, 2), 1),
                 "R'": ((2, 2), -1),
                 "L": ((2, 0), -1),
-                "L'": ((2, 0), -1)
+                "L'": ((2, 0), 1),
+                "M": ((2, 1), -1),
+                "M'": ((2, 1), 1)
             }
             return(switcher.get(m))
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
@@ -222,6 +226,8 @@ def main():
     puzzle1 = puzzle(3)
     puzzle1.doMove("R")
     puzzle1.doMove("L")
+    puzzle1.doMove("R'")
+    puzzle1.doMove("M'")
 
 
 if __name__ == '__main__':
