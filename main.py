@@ -180,21 +180,21 @@ class puzzle:
         def getMove(m):
             match m:
                 case "R":
-                    return ((2, 2), 1)
-                case "R'":
                     return ((2, 2), -1)
+                case "R'":
+                    return ((2, 2), 1)
                 case "L":
-                    return ((2, 0), -1)
-                case "L'":
                     return ((2, 0), 1)
+                case "L'":
+                    return ((2, 0), -1)
                 case "M":
-                    return ((2, 1), -1)
-                case "M'":
                     return ((2, 1), 1)
+                case "M'":
+                    return ((2, 1), -1)
                 case "U":
-                    return ((1, 0), 1)
-                case "U'":
                     return ((1, 0), -1)
+                case "U'":
+                    return ((1, 0), 1)
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
         moveList = moveList.split(" ")
         #Get side
@@ -214,22 +214,21 @@ class puzzle:
     def rotateCube(self, side, dir): # rotates the actual side
         for h in side:
             for l in h:
-                if dir == 1:
-                    l.rotation[2] += math.pi / 2
-                elif dir == -1:
-                    l.rotation[2] -= math.pi / 2
+                l.rotation[2] += dir * math.pi / 2
                 if l.rotation[2] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
                     l.rotation[2] = 0.0
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
         print(side)
-        for i in range(3):
-            for j in range(i):
-                temporaryMatrix = side[i][j]
-                side[i][j] = side[j][i]
-                side[j][i] = temporaryMatrix
-        for i in range(3):
-            side[i].reverse()
+        for d in range(2-dir):
+            for i in range(3):
+                for j in range(i):
+                    temporaryMatrix = side[i][j]
+                    side[i][j] = side[j][i]
+                    side[j][i] = temporaryMatrix
+            for i in range(3):
+                side[i].reverse()
         print(side)
+        #Put rotated side back into original cube matrix
 
 
 
@@ -245,6 +244,7 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     puzzle1.doMove("R")
+    puzzle1.doMove("L")
     #puzzle1.doMove("U")
 
 
