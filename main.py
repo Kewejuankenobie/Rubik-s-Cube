@@ -156,12 +156,12 @@ class puzzle:
         #Use for F, B, and S
         elif posAxis[0] == 1:
             for d in enumerate(self.cubeMatrix):
-                piecesToMove = []
                 if d[0] == posAxis[1]:
                     for h in d[1]:
+                        piecesToMove = []
                         for l in h:
                             piecesToMove.append(l)
-                piecesToMove2D.append(piecesToMove)
+                        piecesToMove2D.append(piecesToMove)
 
 
         #Use for R, L, and M
