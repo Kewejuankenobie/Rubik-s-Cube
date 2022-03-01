@@ -146,20 +146,22 @@ class puzzle:
         #Use for U, D, and E
         if posAxis[0] == 0:
             for d in self.cubeMatrix:
+                piecesToMove = []
                 for h in enumerate(d):
                     if h[0] == posAxis[1]:
-                        piecesToMove = []
                         for l in h[1]:
                             piecesToMove.append(l)
+                        piecesToMove2D.append(piecesToMove)
 
         #Use for F, B, and S
         elif posAxis[0] == 1:
             for d in enumerate(self.cubeMatrix):
+                piecesToMove = []
                 if d[0] == posAxis[1]:
                     for h in d[1]:
-                        piecesToMove = []
                         for l in h:
                             piecesToMove.append(l)
+                piecesToMove2D.append(piecesToMove)
 
 
         #Use for R, L, and M
@@ -191,17 +193,38 @@ class puzzle:
                     return ((2, 1), 1)
                 case "M'":
                     return ((2, 1), -1)
-                case "U":
+                case "F":
                     return ((1, 0), -1)
-                case "U'":
+                case "F'":
                     return ((1, 0), 1)
+                case "B":
+                    return ((1, 2), 1)
+                case "B'":
+                    return ((1, 2), -1)
+                case "S":
+                    return ((1, 2), 1)
+                case "S'":
+                    return ((1, 2), -1)
+                case "U":
+                    return ((0, 0), -1)
+                case "U'":
+                    return ((0, 0), 1)
+                case "D":
+                    return ((0, 2), 1)
+                case "D'":
+                    return ((0, 2), -1)
+                case "E":
+                    return ((0, 1), 1)
+                case "E'":
+                    return ((0, 1), -1)
+
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
         moveList = moveList.split(" ")
         #Get side
         if move in moveList:
             moveInProgress = getMove(move)
             side = self.getSide(moveInProgress[0])
-            self.rotateCube(side, moveInProgress[1])
+            self.rotateCube(side, moveInProgress)
             print(self.cubeMatrix)
             #get side, rotate cube, print  right at the end
 
@@ -214,12 +237,12 @@ class puzzle:
     def rotateCube(self, side, dir): # rotates the actual side
         for h in side:
             for l in h:
-                l.rotation[2] += dir * math.pi / 2
-                if l.rotation[2] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
-                    l.rotation[2] = 0.0
+                l.rotation[dir[0][0]] += dir[1] * math.pi / 2
+                if l.rotation[dir[0][0]] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
+                    l.rotation[dir[0][0]] = 0.0
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
         print(side)
-        for d in range(2-dir):
+        for d in range(2 - dir[1]):
             for i in range(3):
                 for j in range(i):
                     temporaryMatrix = side[i][j]
@@ -243,8 +266,8 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.doMove("R")
-    puzzle1.doMove("L")
+    #puzzle1.doMove("R")
+    puzzle1.doMove("F")
     #puzzle1.doMove("U")
 
 
