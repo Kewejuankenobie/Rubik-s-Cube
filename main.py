@@ -142,21 +142,22 @@ class puzzle:
 
     def getSide(self, posAxis): #(axis, side)
         #included pieces
-        piecesToMove = []
+        piecesToMove2D = []
         #Use for U, D, and E
         if posAxis[0] == 0:
             for d in self.cubeMatrix:
                 for h in enumerate(d):
                     if h[0] == posAxis[1]:
+                        piecesToMove = []
                         for l in h[1]:
                             piecesToMove.append(l)
 
         #Use for F, B, and S
         elif posAxis[0] == 1:
             for d in enumerate(self.cubeMatrix):
-                print(d)
                 if d[0] == posAxis[1]:
                     for h in d[1]:
+                        piecesToMove = []
                         for l in h:
                             piecesToMove.append(l)
 
@@ -164,26 +165,36 @@ class puzzle:
         #Use for R, L, and M
         elif posAxis[0] == 2:
             for d in self.cubeMatrix:
+                piecesToMove = []
                 for h in d:
                     for l in enumerate(h):
                         if l[0] == posAxis[1]:
                             piecesToMove.append(l[1])
-        return piecesToMove
+                piecesToMove2D.append(piecesToMove)
+        return piecesToMove2D
 
     def scramble(self, type):
         pass
 
     def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
         def getMove(m):
-            switcher = {
-                "R": ((2, 2), 1),
-                "R'": ((2, 2), -1),
-                "L": ((2, 0), -1),
-                "L'": ((2, 0), 1),
-                "M": ((2, 1), -1),
-                "M'": ((2, 1), 1)
-            }
-            return(switcher.get(m))
+            match m:
+                case "R":
+                    return ((2, 2), 1)
+                case "R'":
+                    return ((2, 2), -1)
+                case "L":
+                    return ((2, 0), -1)
+                case "L'":
+                    return ((2, 0), 1)
+                case "M":
+                    return ((2, 1), -1)
+                case "M'":
+                    return ((2, 1), 1)
+                case "U":
+                    return ((1, 0), 1)
+                case "U'":
+                    return ((1, 0), -1)
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
         moveList = moveList.split(" ")
         #Get side
@@ -201,16 +212,25 @@ class puzzle:
 
 
     def rotateCube(self, side, dir): # rotates the actual side
-        for d in self.cubeMatrix:
-            for h in d:
-                for l in h:
-                    if l in side:
-                        if dir == 1:
-                            l.rotation[2] += math.pi / 2
-                        elif dir == -1:
-                            l.rotation[2] -= math.pi / 2
-                        if l.rotation[2] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
-                            l.rotation[2] = 0.0
+        for h in side:
+            for l in h:
+                if dir == 1:
+                    l.rotation[2] += math.pi / 2
+                elif dir == -1:
+                    l.rotation[2] -= math.pi / 2
+                if l.rotation[2] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
+                    l.rotation[2] = 0.0
+            #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
+        print(side)
+        for i in range(3):
+            for j in range(i):
+                temporaryMatrix = side[i][j]
+                side[i][j] = side[j][i]
+                side[j][i] = temporaryMatrix
+        for i in range(3):
+            side[i].reverse()
+        print(side)
+
 
 
 # Actual Window
@@ -225,9 +245,7 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     puzzle1.doMove("R")
-    puzzle1.doMove("L")
-    puzzle1.doMove("R'")
-    puzzle1.doMove("M'")
+    #puzzle1.doMove("U")
 
 
 if __name__ == '__main__':
