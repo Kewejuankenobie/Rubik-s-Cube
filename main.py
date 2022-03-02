@@ -146,6 +146,17 @@ class puzzle:
                 side[i].reverse()
         print(side)
         #Put rotated side back into original cube matrix
+        #Do for depending on axis, it changes like in getting the side
+        if dir[0][0] == 0:
+            for d in self.cubeMatrix:
+                for h in enumerate(d):
+                    if h[0] == dir[0][1]:
+                        for l in h[1]:
+                            l = side
+        elif dir[0][0] == 1:
+            pass
+        else:
+            pass
 
 
 
