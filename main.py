@@ -151,7 +151,7 @@ class puzzle:
                     if h[0] == posAxis[1]:
                         for l in h[1]:
                             piecesToMove.append(l)
-                        piecesToMove2D.append(piecesToMove)
+                    piecesToMove2D.append(piecesToMove)
 
         #Use for F, B, and S
         elif posAxis[0] == 1:
@@ -194,13 +194,13 @@ class puzzle:
                 case "M'":
                     return ((2, 1), -1)
                 case "F":
-                    return ((1, 0), -1)
-                case "F'":
                     return ((1, 0), 1)
+                case "F'":
+                    return ((1, 0), -1)
                 case "B":
-                    return ((1, 2), 1)
-                case "B'":
                     return ((1, 2), -1)
+                case "B'":
+                    return ((1, 2), 1)
                 case "S":
                     return ((1, 2), 1)
                 case "S'":
@@ -267,8 +267,8 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     #puzzle1.doMove("R")
-    puzzle1.doMove("F")
-    #puzzle1.doMove("U")
+    #puzzle1.doMove("B")
+    puzzle1.doMove("U")
 
 
 if __name__ == '__main__':
