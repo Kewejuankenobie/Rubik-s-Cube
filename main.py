@@ -151,7 +151,7 @@ class puzzle:
                     if h[0] == posAxis[1]:
                         for l in h[1]:
                             piecesToMove.append(l)
-                    piecesToMove2D.append(piecesToMove)
+                piecesToMove2D.append(piecesToMove)
 
         #Use for F, B, and S
         elif posAxis[0] == 1:
