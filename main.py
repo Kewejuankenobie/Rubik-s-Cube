@@ -37,37 +37,50 @@ class puzzle:
     def getSide(self, posAxis): #(axis, side)
         #included pieces
         piecesToMove2D = []
+        piecePositionsList = []
         #Use for U, D, and E
         if posAxis[0] == 0:
             for d in self.cubeMatrix:
+                depth = self.cubeMatrix.index(d)
                 piecesToMove = []
                 for h in enumerate(d):
                     if h[0] == posAxis[1]:
+                        height = d.index(h[1])
                         for l in h[1]:
+                            length = h[1].index(l)
                             piecesToMove.append(l)
+                            piecePositionsList.append([depth, height, length])
                 piecesToMove2D.append(piecesToMove)
 
         #Use for F, B, and S
         elif posAxis[0] == 1:
             for d in enumerate(self.cubeMatrix):
                 if d[0] == posAxis[1]:
+                    depth = self.cubeMatrix.index(d[1])
                     for h in d[1]:
+                        height = d[1].index(h)
                         piecesToMove = []
                         for l in h:
+                            length = h.index(l)
                             piecesToMove.append(l)
+                            piecePositionsList.append([depth, height, length])
                         piecesToMove2D.append(piecesToMove)
 
 
         #Use for R, L, and M
         elif posAxis[0] == 2:
             for d in self.cubeMatrix:
+                depth = self.cubeMatrix.index(d)
                 piecesToMove = []
                 for h in d:
+                    height = d.index(h)
                     for l in enumerate(h):
                         if l[0] == posAxis[1]:
+                            length = h.index(l[1])
                             piecesToMove.append(l[1])
+                            piecePositionsList.append([depth, height, length])
                 piecesToMove2D.append(piecesToMove)
-        return piecesToMove2D
+        return (piecesToMove2D, piecePositionsList)
 
     def scramble(self, type):
         pass
@@ -171,9 +184,9 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    #puzzle1.doMove("R")
+    puzzle1.doMove("R")
     #puzzle1.doMove("B")
-    puzzle1.doMove("U")
+    #puzzle1.doMove("U")
 
 
 if __name__ == '__main__':
