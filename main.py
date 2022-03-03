@@ -131,7 +131,7 @@ class puzzle:
         if move in moveList:
             moveInProgress = getMove(move)
             side = self.getSide(moveInProgress[0])
-            self.rotateCube(side, moveInProgress)
+            self.rotateCube(side[0], moveInProgress, side[1])
             print(self.cubeMatrix)
             #get side, rotate cube, print  right at the end
 
@@ -141,7 +141,7 @@ class puzzle:
         #Replace original pieces
 
 
-    def rotateCube(self, side, dir): # rotates the actual side
+    def rotateCube(self, side, dir, pos): # rotates the actual side
         for h in side:
             for l in h:
                 l.rotation[dir[0][0]] += dir[1] * math.pi / 2
@@ -160,16 +160,18 @@ class puzzle:
         print(side)
         #Put rotated side back into original cube matrix
         #Do for depending on axis, it changes like getting the side
-        if dir[0][0] == 0:
-            for d in self.cubeMatrix:
-                for h in enumerate(d):
-                    if h[0] == dir[0][1]:
-                        for l in h[1]:
-                            l = side
-        elif dir[0][0] == 1:
-            pass
-        else:
-            pass
+        for d in self.cubeMatrix:
+            depth = self.cubeMatrix.index(d)
+            for h in d:
+                height = d.index(h)
+                for l in h:
+                    length = h.index(l)
+                    if [depth, height, length] == pos[0]:
+                        self.cubeMatrix[depth][height][length] = side[0][0]
+                        pos.pop(0)
+                        side[0].pop(0)
+                        if len(side[0]) == 0:
+                            side.pop(0)
 
 
 
@@ -184,9 +186,9 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    puzzle1.doMove("R")
+    #puzzle1.doMove("F")
     #puzzle1.doMove("B")
-    #puzzle1.doMove("U")
+    puzzle1.doMove("U")
 
 
 if __name__ == '__main__':
