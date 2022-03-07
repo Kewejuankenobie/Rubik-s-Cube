@@ -160,18 +160,14 @@ class puzzle:
         print(side)
         #Put rotated side back into original cube matrix
         #Do for depending on axis, it changes like getting the side
-        for d in self.cubeMatrix:
-            depth = self.cubeMatrix.index(d)
-            for h in d:
-                height = d.index(h)
-                for l in h:
-                    length = h.index(l)
+        for d in enumerate(self.cubeMatrix):
+            depth = d[0]
+            for h in enumerate(d[1]):
+                height = h[0]
+                for l in enumerate(h[1]):
+                    length = l[0]
                     if [depth, height, length] in pos:
-                        print([depth, height, length]) #Going Backwards in list at one point
-                        print(side[0][0])
                         self.cubeMatrix[depth][height][length] = side[0][0]
-                        print(self.cubeMatrix[depth][height][length])
-                        print(self.cubeMatrix)
                         side[0].pop(0)
                         if len(side[0]) == 0:
                             side.pop(0)
@@ -191,7 +187,7 @@ def main():
     puzzle1 = puzzle(3)
     #puzzle1.doMove("F")
     #puzzle1.doMove("B")
-    puzzle1.doMove("D")
+    puzzle1.doMove("U")
 
 
 if __name__ == '__main__':
