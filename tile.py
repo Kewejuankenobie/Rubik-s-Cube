@@ -48,7 +48,7 @@ class edge(tile):
                 self.colors["s2"] = "r"
                 self.rotation[1] = (3 * math.pi) / 2
     def __repr__(self):
-        return f"Color {self.colors}, Rotation: {self.rotation}"
+        return f"(Color {self.colors}, Rotation: {self.rotation})"
 
 
 
@@ -76,7 +76,7 @@ class center(tile):
                     self.colors["s1"] = "r"
                     self.rotation[0] = math.pi / 2
     def __repr__(self):
-        return f"Color {self.colors}, Rotation: {self.rotation}"
+        return f"(Color {self.colors}, Rotation: {self.rotation})"
 
 
 class corner(tile):
@@ -104,7 +104,7 @@ class corner(tile):
             self.colors["s3"] = "r"
             self.rotation[2] = 0.0
     def __repr__(self):
-        return f"Color {self.colors}, Rotation: {self.rotation}"
+        return f"(Color {self.colors}, Rotation: {self.rotation})"
 
 if __name__ == "__main__":
     print("This is the tile class")

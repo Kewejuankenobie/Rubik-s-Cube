@@ -166,10 +166,12 @@ class puzzle:
                 height = d.index(h)
                 for l in h:
                     length = h.index(l)
-                    if [depth, height, length] == pos[0]:
-                        print(side)
+                    if [depth, height, length] in pos:
+                        print([depth, height, length]) #Going Backwards in list at one point
+                        print(side[0][0])
                         self.cubeMatrix[depth][height][length] = side[0][0]
-                        pos.pop(0)
+                        print(self.cubeMatrix[depth][height][length])
+                        print(self.cubeMatrix)
                         side[0].pop(0)
                         if len(side[0]) == 0:
                             side.pop(0)
@@ -189,7 +191,7 @@ def main():
     puzzle1 = puzzle(3)
     #puzzle1.doMove("F")
     #puzzle1.doMove("B")
-    puzzle1.doMove("U")
+    puzzle1.doMove("D")
 
 
 if __name__ == '__main__':
