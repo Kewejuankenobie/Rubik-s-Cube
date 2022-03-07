@@ -167,6 +167,7 @@ class puzzle:
                 for l in h:
                     length = h.index(l)
                     if [depth, height, length] == pos[0]:
+                        print(side)
                         self.cubeMatrix[depth][height][length] = side[0][0]
                         pos.pop(0)
                         side[0].pop(0)
