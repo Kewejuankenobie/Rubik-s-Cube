@@ -1,6 +1,6 @@
 # Class describing the puzzle
 import math
-from tile import tile, corner, edge, center
+from tile import *
 
 #Actual puzzle
 class puzzle:
@@ -183,7 +183,6 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    #Sexy Move Example
     run = True
     while run:
         inputMove = input("Enter a Move in the format R, B', E, ect: ")
