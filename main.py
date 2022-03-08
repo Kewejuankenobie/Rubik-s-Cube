@@ -148,7 +148,6 @@ class puzzle:
                 if l.rotation[dir[0][0]] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
                     l.rotation[dir[0][0]] = 0.0
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
-        print(side)
         for d in range(2 - dir[1]):
             for i in range(3):
                 for j in range(i):
@@ -157,7 +156,6 @@ class puzzle:
                     side[j][i] = temporaryMatrix
             for i in range(3):
                 side[i].reverse()
-        print(side)
         #Put rotated side back into original cube matrix
         #Do for depending on axis, it changes like getting the side
         for d in enumerate(self.cubeMatrix):
@@ -186,10 +184,15 @@ class game:
 def main():
     puzzle1 = puzzle(3)
     #Sexy Move Example
-    puzzle1.doMove("R")
-    puzzle1.doMove("U")
-    puzzle1.doMove("R'")
-    puzzle1.doMove("U'")
+    run = True
+    while run:
+        inputMove = input("Enter a Move in the format R, B', E, ect: ")
+        if inputMove == "exit":
+            run = False
+        else:
+            puzzle1.doMove(inputMove)
+    print("Done")
+
 
 
 if __name__ == '__main__':
