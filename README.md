@@ -13,4 +13,4 @@ A virtual rubik's cube with the ability to solve, get a tutorial. Made in python
 
 3/2 Now Can get sides and rotate them, but doesn't affect original matrix
 
-3/8 Now Rotated sides affect original cube matrix. The cube can do every move now
+3/8 Now Rotated sides affect original cube matrix. The cube can do every move now with text based input
