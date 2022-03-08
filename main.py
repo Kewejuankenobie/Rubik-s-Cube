@@ -185,9 +185,11 @@ class game:
 
 def main():
     puzzle1 = puzzle(3)
-    #puzzle1.doMove("F")
-    #puzzle1.doMove("B")
+    #Sexy Move Example
+    puzzle1.doMove("R")
     puzzle1.doMove("U")
+    puzzle1.doMove("R'")
+    puzzle1.doMove("U'")
 
 
 if __name__ == '__main__':
