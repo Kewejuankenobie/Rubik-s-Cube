@@ -191,7 +191,7 @@ def main():
             run = False
         else:
             puzzle1.doMove(inputMove)
-    print("Done")
+    print("Program Done")
 
 
 
