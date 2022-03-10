@@ -17,4 +17,5 @@ Before running, Python 3.10.2 is required at a minimum
 
 3/8 Now Rotated sides affect original cube matrix. The cube can do every move now with text based input
 
-3/10 Moved Puzzle into a seperate python file
+3/10 Moved Puzzle into a seperate python file, debating what module to use for 3d Graphics
+PyGame, x3d, pyopengl, matplotlib, vector

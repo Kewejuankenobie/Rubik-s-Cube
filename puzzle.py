@@ -1,5 +1,4 @@
 # Class describing the puzzle
-import math
 from tile import *
 
 #Actual puzzle
