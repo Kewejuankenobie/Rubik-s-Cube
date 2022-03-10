@@ -16,3 +16,5 @@ Before running, Python 3.10.2 is required at a minimum
 3/2 Now Can get sides and rotate them, but doesn't affect original matrix
 
 3/8 Now Rotated sides affect original cube matrix. The cube can do every move now with text based input
+
+3/10 Moved Puzzle into a seperate python file
