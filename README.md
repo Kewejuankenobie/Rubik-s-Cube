@@ -19,3 +19,6 @@ Before running, Python 3.10.2 is required at a minimum
 
 3/10 Moved Puzzle into a seperate python file, debating what module to use for 3d Graphics
 PyGame, x3d, pyopengl, matplotlib, vector
+
+3/14 Decided on making a 3d engine using pyOpenGL, made 2 classes for points and vectors which will be used later
+Rotate Sides by clearing screen and redrawing

@@ -1,5 +1,7 @@
 from puzzle import *
 
+import pygame
+
 # Actual Window
 class game:
     #Create window
