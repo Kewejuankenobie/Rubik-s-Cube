@@ -33,8 +33,8 @@ def clearScreen():
     glClearColor(0.0, 0.0, 0.0, 1.0)
     gluOrtho2D(-1.0, 1.0, -1.0, 1.0)
 
-def plotPoints():
-    pass
+def screen():
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
 def main():
     vec1 = Vector3(3, 4, 5, 1, 2, 1)
