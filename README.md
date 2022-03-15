@@ -22,3 +22,5 @@ PyGame, x3d, pyopengl, matplotlib, vector
 
 3/14 Decided on making a 3d engine using pyOpenGL, made 2 classes for points and vectors which will be used later
 Rotate Sides by clearing screen and redrawing
+
+3/15 No major updates to project, but did some testing on pyGame and OpenGL, ultimately decided to use this
