@@ -24,3 +24,4 @@ PyGame, x3d, pyopengl, matplotlib, vector
 Rotate Sides by clearing screen and redrawing
 
 3/15 No major updates to project, but did some testing on pyGame and OpenGL, ultimately decided to use this
+Next want to make 27 wireframe cubes in a 3x3x3 pattern
