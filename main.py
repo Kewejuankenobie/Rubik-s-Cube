@@ -1,17 +1,10 @@
 from puzzle import *
-
-import pygame
-
-# Actual Window
-class game:
-    #Create window
-    #Create Puzzle from init parameters
-    #Make puzzle in 3D
-    #Other functionality
-    pass
-
+import engine
 
 def main():
+    newGame = engine.game()
+    newGame.makeCube()
+    newGame.quit()
     puzzle1 = puzzle(3)
     run = True
     while run:
