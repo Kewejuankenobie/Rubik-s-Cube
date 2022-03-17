@@ -33,6 +33,9 @@ class puzzle:
             self.cubeMatrix.append(depth)
         print(self.cubeMatrix)
 
+    def getState(self):
+        return self.cubeMatrix
+
     def getSide(self, posAxis): #(axis, side)
         #included pieces
         piecesToMove2D = []
