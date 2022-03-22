@@ -11,7 +11,10 @@ def main():
         for h in enumerate(d[1]):
             for l in enumerate(h[1]):
                 newGame.makeCube([d[0], h[0], l[0]])
-                sleep(1)
+                #sleep(0.25)
+
+    newGame.updateDisplay()
+
     while run:
         newGame.allowQuit()
         #Other code to update
