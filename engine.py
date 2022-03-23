@@ -41,37 +41,49 @@ class cube:
         for v in self.vertecies:
             print(v)
             print(i)
-            #Need to itterate correctly
-            v[0] += i[0]
-            v[1] += i[1]
-            v[2] += i[2]
+            #Oriented correctly now
+            v[0] -= self.i[0]
+            v[1] += self.i[1]
+            v[2] += self.i[2]
 
         #Make lines
         self.lines = ((0, 1), (0, 2), (0, 4), (1, 5), (1, 3), (2, 3), (2, 6),
                  (3, 7), (4, 5), (4, 6), (5, 7), (6, 7))
 
-        self.quads = [(0, 1, 3, 2), (0, 1, 5, 4), (0, 2, 6, 4), (1, 3, 7, 5), (4, 5, 7, 6), (2, 3, 7, 6)]
+        self.quads = [(0, 1, 5, 4), (1, 3, 7, 5), (0, 1, 3, 2), (4, 5, 7, 6), (0, 2, 6, 4), (2, 3, 7, 6)]
         #create cube at that position
 
  # Solid Cube
         glBegin(GL_QUADS)
         r = 0.0
         b = 0.0
-        g = 1.0
-        for cubeQuad in self.quads:
+        g = 0.0
+        for cubeQuad in enumerate(self.quads):
+            match cubeQuad[0]:
+                case 0:
+                    glColor3f(r + 1.0, g + 1.0, b)  # color
+                case 1:
+                    glColor3f(r + 1.0, g, b + 1.0)
+                case 2:
+                    glColor3f(r, g, b + 1.0)
+                case 3:
+                    glColor3f(r + 1.0, g, b)
+                case 4:
+                    glColor3f(r, g + 1.0, b)
+                case 5:
+                    glColor3f(r + 1.0, g + 1.0, b + 1.0)
 
-            for cubeVertex in cubeQuad:
-                glColor3f(r, g, b)  # color
+            for cubeVertex in cubeQuad[1]:
 
                 glVertex3fv(self.vertecies[cubeVertex])  # Draw quads from points inputed
         glEnd()
 
-        glBegin(GL_LINES)  # Tells start gl code and how to handle
+        '''glBegin(GL_LINES)  # Tells start gl code and how to handle
         for cubeEdge in self.lines:
             for cubeVertex in cubeEdge:
                 glColor(0, 0, 0)
                 glVertex3fv(self.vertecies[cubeVertex])  # Draw lines between the points inputed
-        glEnd()
+        glEnd()'''
 
 
     def recolorSides(self):
@@ -84,8 +96,10 @@ class game:
         display = (500, 500)
         pg.display.set_mode(display, DOUBLEBUF | OPENGL)  # Sets display mode to openGL
         gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)  # Sets up Camera
-        glTranslatef(-2, -1, -8)  # Sets translation of the camera
-        glRotatef(30, 1, 1, 0.5)  # Sets rotation of the camera
+        glTranslatef(-1, -2, -10)  # Sets translation of the camera
+        glRotatef(60, 0, 1, 0)  # Sets rotation of the camera
+        glRotatef(15, 0, 0, 1)
+        #glEnableClientState(GL_COLOR_ARRAY)
             # glRotatef(1, 3, 1, 1)
             # glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) #Clears color and depth
             # cube1 = cube("test", 1)
@@ -103,6 +117,7 @@ class game:
         #glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         #glLoadIdentity()
         newCube = cube("test", pos)
+        #pg.display.flip()
         #glutSwapBuffers()
         self.canQuit = True
 
@@ -112,6 +127,10 @@ class game:
 
 def main():
     new = game()
+    newCube = new.makeCube([0, 0, 0])
+    new.updateDisplay()
+    while True:
+        new.allowQuit()
     '''#vec1 = Vector3(3, 4, 5, 1, 2, 1)
     #print(vec1.magnitude())
     pg.init()
