@@ -14,20 +14,12 @@ class puzzle:
             for h in range(type):
                 height = []
                 for l in range(type):
-                    if d == 0 or d == type - 1:
-                        if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            height.append(corner(d, h, l))
-                        elif l == 1 and h == 1:
-                            height.append(center(d, h, l))
-                        else:
-                            height.append(edge(d, h, l))
-                    else:
-                        if (l == 0 or l == type - 1) and (h == 0 or h == type - 1):
-                            height.append(edge(d, h, l))
-                        elif l == 1 and h == 1:
-                            height.append(tile(d, h, l))
-                        else:
-                            height.append(center(d, h, l))
+                    height.append(tile(d, h, l, ["y", "m", "b", "r", "g", "w"])) #Now color order based on perspective
+                    #[y, m, b, r, g, w] is default
+                    #R moves 1 to 5, 5 to 6, 6 to 3, 3 to 1
+                    #U moves 2 to 3, 3 to 4, 4 to 5, 5 to 2
+                    #F moves 1 to 2, 2 to 6, 6 to 4, 4 to 1
+                    #Use cube rotation moves for rotating cube, makes easy
 
                 depth.append(height)
             self.cubeMatrix.append(depth)
@@ -142,13 +134,13 @@ class puzzle:
         #Move side list, change rotation, if = 2pi, change back to 0
         #Replace original pieces
 
-
     def rotateCube(self, side, dir, pos): # rotates the actual side
-        for h in side:
-            for l in h:
-                l.rotation[dir[0][0]] += dir[1] * math.pi / 2
-                if l.rotation[dir[0][0]] >= 2 * math.pi or l.rotation[2] <= -2 * math.pi:
-                    l.rotation[dir[0][0]] = 0.0
+        #Rotates Side
+        dupeSide = side
+        multiplyer = dir[1] #will be 1 or -1 for itterating through the list via multiplying
+
+
+
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
         for d in range(2 - dir[1]):
             for i in range(3):
