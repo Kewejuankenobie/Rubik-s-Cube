@@ -2,16 +2,18 @@ from puzzle import *
 import engine
 from time import sleep
 
+def newCube(g, p):
+    for d in enumerate(p):
+        for h in enumerate(d[1]):
+            for l in enumerate(h[1]):
+                g.makeCube([d[0], h[0], l[0]])
+
 def main():
     allCubes = False
     run = True
     puzzle1 = puzzle(3)
     newGame = engine.game()
-    for d in enumerate(puzzle1.getState()):
-        for h in enumerate(d[1]):
-            for l in enumerate(h[1]):
-                newGame.makeCube([d[0], h[0], l[0]])
-                #sleep(0.25)
+    newCube(newGame, puzzle1.getState())
 
     newGame.updateDisplay()
 

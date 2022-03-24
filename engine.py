@@ -6,31 +6,6 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
-class point():
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
-    def getX(self):
-        return self.x
-    def getY(self):
-        return self.y
-    def getZ(self):
-        return self.z
-
-class Vector3():
-    def __init__(self, x1, y1, z1, x2, y2, z2):
-        self.firstPoint = point(x1, y1, z1)
-        self.secondPoint = point(x2, y2, z2)
-    def x(self):
-        return self.secondPoint.getX() - self.firstPoint.getX()
-    def y(self):
-        return self.secondPoint.getY() - self.firstPoint.getY()
-    def z(self):
-        return self.secondPoint.getZ() - self.firstPoint.getZ()
-    def magnitude(self):
-        return math.sqrt(self.x() ** 2 + self.y() ** 2 + self.z() ** 2)
-
 class cube:
     def __init__(self, type, i):
         self.type = type
@@ -39,9 +14,7 @@ class cube:
         self.vertecies = [[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0], [0, 0, 1], [1, 0, 1], [0, 1, 1], [1, 1, 1]]
         self.orgVertecies = self.vertecies
         for v in self.vertecies:
-            print(v)
-            print(i)
-            #Oriented correctly now
+            #Oriented correctly now with green at front, red at right, white on top
             v[0] -= self.i[0]
             v[1] += self.i[1]
             v[2] += self.i[2]
@@ -86,7 +59,7 @@ class cube:
         glEnd()'''
 
 
-    def recolorSides(self):
+    def setColor(self, pieceInList):
         pass
 
 class game:
@@ -131,25 +104,6 @@ def main():
     new.updateDisplay()
     while True:
         new.allowQuit()
-    '''#vec1 = Vector3(3, 4, 5, 1, 2, 1)
-    #print(vec1.magnitude())
-    pg.init()
-    display = (500, 500)
-    pg.display.set_mode(display, DOUBLEBUF | OPENGL)  # Sets display mode to openGL
-    gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)  # Sets up Camera
-    glTranslatef(0.0, -1, -8)  # Sets translation of the camera
-    glRotatef(30, 1, 1, 0)  # Sets rotation of the camera
-
-    while True:
-        # glRotatef(1, 3, 1, 1)
-        # glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) #Clears color and depth
-        cube1 = cube("test", 1)
-        pg.display.flip()  # Updates display
-        # pg.time.wait(10) #How often updated
-        for event in pg.event.get():  # Adds ability to quit
-            if event.type == pg.QUIT:
-                pg.quit()
-                quit()'''
 
 if __name__ == "__main__":
     main()

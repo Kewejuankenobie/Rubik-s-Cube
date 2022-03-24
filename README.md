@@ -28,3 +28,5 @@ Next want to make 27 wireframe cubes in a 3x3x3 pattern
 
 3/23 Have a 3x3x3 cube, but cubes have no perspective, and only one color, Define colors individually for faces
 Cube is now multicolored, but not shown properly
+
+3/24 Beginning work on recoloring pieces, may have to reformat how colors are seen in program (list instead of dic)
