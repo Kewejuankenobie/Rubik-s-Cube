@@ -136,8 +136,6 @@ class puzzle:
 
     def rotateCube(self, side, dir, pos): # rotates the actual side
         #Rotates Side
-        dupeColor = side[0][0].color
-        print(dupeColor)
         multiplyer = dir[1] #will be 1 or -1 for itterating through the list via multiplying
 
         # R moves 1 to 5, 5 to 6, 6 to 3, 3 to 1
@@ -147,12 +145,13 @@ class puzzle:
 
         for row in side:
             for piece in row:
+                dupeColor = [c for c in piece.color]
                 if dir[0][0] == 2:
                     if dir[1] == -1:
-                        piece.color[4] = "y"
-                        piece.color[5] = "g"
-                        piece.color[2] = "w"
-                        piece.color[0] = "b"
+                        piece.color[4] = dupeColor[0]
+                        piece.color[5] = dupeColor[4]
+                        piece.color[2] = dupeColor[5]
+                        piece.color[0] = dupeColor[2]
                     elif dir[1] == 1:
                         pass
 
