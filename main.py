@@ -6,12 +6,13 @@ def newCube(g, p):
     for d in enumerate(p):
         for h in enumerate(d[1]):
             for l in enumerate(h[1]):
-                g.makeCube([d[0], h[0], l[0]])
+                g.makeCube([d[0], h[0], l[0]], l[1])
 
 def main():
     allCubes = False
     run = True
     puzzle1 = puzzle(3)
+    puzzle1.doMove("R")
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
 

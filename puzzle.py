@@ -103,9 +103,9 @@ class puzzle:
                 case "B'":
                     return ((1, 2), 1)
                 case "S":
-                    return ((1, 2), 1)
+                    return ((1, 1), 1)
                 case "S'":
-                    return ((1, 2), -1)
+                    return ((1, 1), -1)
                 case "U":
                     return ((0, 0), -1)
                 case "U'":
@@ -136,8 +136,25 @@ class puzzle:
 
     def rotateCube(self, side, dir, pos): # rotates the actual side
         #Rotates Side
-        dupeSide = side
+        dupeColor = side[0][0].color
+        print(dupeColor)
         multiplyer = dir[1] #will be 1 or -1 for itterating through the list via multiplying
+
+        # R moves 1 to 5, 5 to 6, 6 to 3, 3 to 1
+        # U moves 2 to 3, 3 to 4, 4 to 5, 5 to 2
+        # F moves 1 to 2, 2 to 6, 6 to 4, 4 to 1
+        # Use cube rotation moves for rotating cube, makes easy
+
+        for row in side:
+            for piece in row:
+                if dir[0][0] == 2:
+                    if dir[1] == -1:
+                        piece.color[4] = "y"
+                        piece.color[5] = "g"
+                        piece.color[2] = "w"
+                        piece.color[0] = "b"
+                    elif dir[1] == 1:
+                        pass
 
 
 

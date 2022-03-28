@@ -7,7 +7,7 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 class cube:
-    def __init__(self, type, i):
+    def __init__(self, type, i, p):
         self.type = type
         self.i = i
         #Make verticies 0 to 1, 1 to 2, 2 to 3
@@ -27,24 +27,36 @@ class cube:
         #create cube at that position
 
  # Solid Cube
+        print(p)
         glBegin(GL_QUADS)
-        r = 0.0
-        b = 0.0
-        g = 0.0
+        for color in enumerate(p.color):
+            match color[1]:
+                case "y":
+                    p.color[color[0]] = (1.0, 1.0, 0.0)
+                case "m":
+                    p.color[color[0]] = (1.0, 0.0, 1.0)
+                case "b":
+                    p.color[color[0]] = (0.0, 0.0, 1.0)
+                case "r":
+                    p.color[color[0]] = (1.0, 0.0, 0.0)
+                case "g":
+                    p.color[color[0]] = (0.0, 1.0, 0.0)
+                case "w":
+                    p.color[color[0]] = (1.0, 1.0, 1.0)
         for cubeQuad in enumerate(self.quads):
             match cubeQuad[0]:
                 case 0:
-                    glColor3f(r + 1.0, g + 1.0, b)  # color
+                    glColor3f(p.color[0][0], p.color[0][1], p.color[0][2])  # color
                 case 1:
-                    glColor3f(r + 1.0, g, b + 1.0)
+                    glColor3f(p.color[1][0], p.color[1][1], p.color[1][2])
                 case 2:
-                    glColor3f(r, g, b + 1.0)
+                    glColor3f(p.color[2][0], p.color[2][1], p.color[2][2])
                 case 3:
-                    glColor3f(r + 1.0, g, b)
+                    glColor3f(p.color[3][0], p.color[3][1], p.color[3][2])
                 case 4:
-                    glColor3f(r, g + 1.0, b)
+                    glColor3f(p.color[4][0], p.color[4][1], p.color[4][2])
                 case 5:
-                    glColor3f(r + 1.0, g + 1.0, b + 1.0)
+                    glColor3f(p.color[5][0], p.color[5][1], p.color[5][2])
 
             for cubeVertex in cubeQuad[1]:
 
@@ -85,11 +97,11 @@ class game:
                 pg.quit()
                 quit()
 
-    def makeCube(self, pos):
+    def makeCube(self, pos, piece):
         self.canQuit = False
         #glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         #glLoadIdentity()
-        newCube = cube("test", pos)
+        newCube = cube("test", pos, piece)
         #pg.display.flip()
         #glutSwapBuffers()
         self.canQuit = True
@@ -100,7 +112,7 @@ class game:
 
 def main():
     new = game()
-    newCube = new.makeCube([0, 0, 0])
+    newCube = new.makeCube([0, 0, 0], "l")
     new.updateDisplay()
     while True:
         new.allowQuit()
