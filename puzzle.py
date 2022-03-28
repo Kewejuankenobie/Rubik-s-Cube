@@ -153,7 +153,10 @@ class puzzle:
                         piece.color[2] = dupeColor[5]
                         piece.color[0] = dupeColor[2]
                     elif dir[1] == 1:
-                        pass
+                        piece.color[2] = dupeColor[0]
+                        piece.color[5] = dupeColor[2]
+                        piece.color[4] = dupeColor[5]
+                        piece.color[0] = dupeColor[4]
 
 
 
