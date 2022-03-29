@@ -95,25 +95,25 @@ class puzzle:
                 case "M'":
                     return ((2, 1), -1)
                 case "F":
-                    return ((1, 0), 1)
-                case "F'":
-                    return ((1, 0), -1)
-                case "B":
                     return ((1, 2), -1)
-                case "B'":
+                case "F'":
                     return ((1, 2), 1)
+                case "B":
+                    return ((1, 0), 1)
+                case "B'":
+                    return ((1, 0), -1)
                 case "S":
                     return ((1, 1), 1)
                 case "S'":
                     return ((1, 1), -1)
                 case "U":
-                    return ((0, 0), -1)
-                case "U'":
-                    return ((0, 0), 1)
-                case "D":
-                    return ((0, 2), 1)
-                case "D'":
                     return ((0, 2), -1)
+                case "U'":
+                    return ((0, 2), 1)
+                case "D":
+                    return ((0, 0), 1)
+                case "D'":
+                    return ((0, 0), -1)
                 case "E":
                     return ((0, 1), 1)
                 case "E'":
@@ -157,6 +157,28 @@ class puzzle:
                         piece.color[5] = dupeColor[2]
                         piece.color[4] = dupeColor[5]
                         piece.color[0] = dupeColor[4]
+                if dir[0][0] == 1:
+                    if dir[1] == -1:
+                        piece.color[1] = dupeColor[0]
+                        piece.color[5] = dupeColor[1]
+                        piece.color[3] = dupeColor[5]
+                        piece.color[0] = dupeColor[3]
+                    elif dir[1] == 1:
+                        piece.color[3] = dupeColor[0]
+                        piece.color[5] = dupeColor[3]
+                        piece.color[1] = dupeColor[5]
+                        piece.color[0] = dupeColor[1]
+                if dir[0][0] == 0:
+                    if dir[1] == -1:
+                        piece.color[2] = dupeColor[1]
+                        piece.color[3] = dupeColor[2]
+                        piece.color[4] = dupeColor[3]
+                        piece.color[1] = dupeColor[4]
+                    elif dir[1] == 1:
+                        piece.color[4] = dupeColor[1]
+                        piece.color[3] = dupeColor[4]
+                        piece.color[2] = dupeColor[3]
+                        piece.color[1] = dupeColor[2]
 
 
 
