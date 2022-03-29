@@ -32,3 +32,4 @@ Cube is now multicolored, but not shown properly
 3/24 Beginning work on recoloring pieces, may have to reformat how colors are seen in program (list instead of dic)
 
 3/28 R and R' move now works as expected
+3/29 Almost all moves work, need to fix bug where U, D, and E don't work on anything other than the first move.
