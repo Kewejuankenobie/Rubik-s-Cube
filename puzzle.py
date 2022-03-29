@@ -157,7 +157,7 @@ class puzzle:
                         piece.color[5] = dupeColor[2]
                         piece.color[4] = dupeColor[5]
                         piece.color[0] = dupeColor[4]
-                if dir[0][0] == 1:
+                elif dir[0][0] == 1:
                     if dir[1] == -1:
                         piece.color[1] = dupeColor[0]
                         piece.color[5] = dupeColor[1]
@@ -168,7 +168,7 @@ class puzzle:
                         piece.color[5] = dupeColor[3]
                         piece.color[1] = dupeColor[5]
                         piece.color[0] = dupeColor[1]
-                if dir[0][0] == 0:
+                elif dir[0][0] == 0:
                     if dir[1] == -1:
                         piece.color[2] = dupeColor[1]
                         piece.color[3] = dupeColor[2]
@@ -180,8 +180,6 @@ class puzzle:
                         piece.color[2] = dupeColor[3]
                         piece.color[1] = dupeColor[2]
 
-
-
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
         for d in range(2 - dir[1]):
             for i in range(3):
@@ -191,9 +189,12 @@ class puzzle:
                     side[j][i] = temporaryMatrix
             for i in range(3):
                 side[i].reverse()
+
+
         #Put rotated side back into original cube matrix
         #Do for depending on axis, it changes like getting the side
         for d in enumerate(self.cubeMatrix):
+            actualDepth = 0
             depth = d[0]
             for h in enumerate(d[1]):
                 height = h[0]
@@ -204,3 +205,4 @@ class puzzle:
                         side[0].pop(0)
                         if len(side[0]) == 0:
                             side.pop(0)
+        self.cubeMatrix.reverse()
