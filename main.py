@@ -13,7 +13,8 @@ def main():
     run = True
     puzzle1 = puzzle(3)
     puzzle1.doMove("R")
-    puzzle1.doMove("R'")
+    puzzle1.doMove("F")
+    puzzle1.doMove("U")
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
 
