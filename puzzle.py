@@ -15,11 +15,6 @@ class puzzle:
                 height = []
                 for l in range(type):
                     height.append(tile(d, h, l, ["y", "m", "b", "r", "g", "w"])) #Now color order based on perspective
-                    #[y, m, b, r, g, w] is default
-                    #R moves 1 to 5, 5 to 6, 6 to 3, 3 to 1
-                    #U moves 2 to 3, 3 to 4, 4 to 5, 5 to 2
-                    #F moves 1 to 2, 2 to 6, 6 to 4, 4 to 1
-                    #Use cube rotation moves for rotating cube, makes easy
 
                 depth.append(height)
             self.cubeMatrix.append(depth)
@@ -107,17 +102,17 @@ class puzzle:
                 case "S'":
                     return ((1, 1), -1)
                 case "U":
-                    return ((0, 2), -1)
-                case "U'":
                     return ((0, 2), 1)
+                case "U'":
+                    return ((0, 2), -1)
                 case "D":
-                    return ((0, 0), 1)
-                case "D'":
                     return ((0, 0), -1)
+                case "D'":
+                    return ((0, 0), 1)
                 case "E":
-                    return ((0, 1), 1)
-                case "E'":
                     return ((0, 1), -1)
+                case "E'":
+                    return ((0, 1), 1)
 
         moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
         moveList = moveList.split(" ")
@@ -170,15 +165,15 @@ class puzzle:
                         piece.color[0] = dupeColor[1]
                 elif dir[0][0] == 0:
                     if dir[1] == -1:
-                        piece.color[2] = dupeColor[1]
-                        piece.color[3] = dupeColor[2]
-                        piece.color[4] = dupeColor[3]
-                        piece.color[1] = dupeColor[4]
-                    elif dir[1] == 1:
                         piece.color[4] = dupeColor[1]
                         piece.color[3] = dupeColor[4]
                         piece.color[2] = dupeColor[3]
                         piece.color[1] = dupeColor[2]
+                    elif dir[1] == 1:
+                        piece.color[2] = dupeColor[1]
+                        piece.color[3] = dupeColor[2]
+                        piece.color[4] = dupeColor[3]
+                        piece.color[1] = dupeColor[4]
 
             #Rearange Matrix by finding transpose and reversing the order of each row (Linear Algebra)
         for d in range(2 - dir[1]):
@@ -190,11 +185,9 @@ class puzzle:
             for i in range(3):
                 side[i].reverse()
 
-
         #Put rotated side back into original cube matrix
         #Do for depending on axis, it changes like getting the side
         for d in enumerate(self.cubeMatrix):
-            actualDepth = 0
             depth = d[0]
             for h in enumerate(d[1]):
                 height = h[0]
@@ -205,4 +198,3 @@ class puzzle:
                         side[0].pop(0)
                         if len(side[0]) == 0:
                             side.pop(0)
-        self.cubeMatrix.reverse()

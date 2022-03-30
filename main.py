@@ -15,7 +15,8 @@ def main():
     puzzle1.doMove("R")
     puzzle1.doMove("U")
     puzzle1.doMove("R'")
-    #puzzle1.doMove("F'")
+    puzzle1.doMove("U'")
+    #puzzle1.doMove("F")
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
 
