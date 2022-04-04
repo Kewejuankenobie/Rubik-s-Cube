@@ -113,14 +113,35 @@ class puzzle:
                     return ((0, 1), -1)
                 case "E'":
                     return ((0, 1), 1)
+                #Cube Rotations
+                case "X":
+                    return ([2, 4], -1)
+                case "X'":
+                    return ([2, 4], 1)
+                case "Y":
+                    return ([0, 4], 1)
+                case "Y'":
+                    return ([0, 4], -1)
+                case "Z":
+                    return ([1, 4], -1)
+                case "Z'":
+                    return ([1, 4], 1)
 
-        moveList = "R L M F B S U D E R' L' M' F' B' S' U' D' E'"
+        moveList = "R L M F B S U D E X Y Z R' L' M' F' B' S' U' D' E' X' Y' Z'"
         moveList = moveList.split(" ")
         #Get side
         if move in moveList:
             moveInProgress = getMove(move)
-            side = self.getSide(moveInProgress[0])
-            self.rotateCube(side[0], moveInProgress, side[1])
+            #For Cube Rotation
+            if moveInProgress[0][1] == 4:
+                for s in range(3):
+                    moveInProgress[0][1] = s
+                    side = self.getSide(moveInProgress[0])
+                    self.rotateCube(side[0], moveInProgress, side[1])
+            #For individual layer
+            else:
+                side = self.getSide(moveInProgress[0])
+                self.rotateCube(side[0], moveInProgress, side[1])
             print(self.cubeMatrix)
             #get side, rotate cube, print  right at the end
 
