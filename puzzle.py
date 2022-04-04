@@ -20,10 +20,10 @@ class puzzle:
             self.cubeMatrix.append(depth)
         print(self.cubeMatrix)
 
-    def getState(self):
+    def getState(self)-> list:
         return self.cubeMatrix
 
-    def getSide(self, posAxis): #(axis, side)
+    def getSide(self, posAxis)-> tuple: #(axis, side)
         #included pieces
         piecesToMove2D = []
         piecePositionsList = []
@@ -75,7 +75,7 @@ class puzzle:
         pass
 
     def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
-        def getMove(m):
+        def getMove(m)-> tuple:
             match m:
                 case "R":
                     return ((2, 2), -1)

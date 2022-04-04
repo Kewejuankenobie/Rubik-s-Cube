@@ -35,3 +35,5 @@ Cube is now multicolored, but not shown properly
 3/29 Almost all moves work, need to fix bug where U, D, and E don't work on anything other than the first move.
 
 3/30 Fixed bug with U, D, and E moves not working, plan on adding cube rotation moves next
+
+4/4 Cube rotations added, can see each rotated side individually

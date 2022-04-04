@@ -8,28 +8,41 @@ def newCube(g, p):
             for l in enumerate(h[1]):
                 g.makeCube([d[0], h[0], l[0]], l[1])
 
+def displayMove(p, m, g):
+    sleep(0.25)
+    p.doMove(m)
+    newCube(g, p.getState())
+    g.updateDisplay()
+
 def main():
     allCubes = False
     run = True
     puzzle1 = puzzle(3)
-    puzzle1.doMove("M'")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("U")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("U")
-    puzzle1.doMove("U")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("U")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("M'")
-    puzzle1.doMove("Z")
-    #puzzle1.doMove("F")
+
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
-
     newGame.updateDisplay()
+    sleep(0.25)
+
+    #T Perm
+    displayMove(puzzle1, "R", newGame)
+    displayMove(puzzle1, "U", newGame)
+    displayMove(puzzle1, "R'", newGame)
+    displayMove(puzzle1, "U'", newGame)
+    displayMove(puzzle1, "R'", newGame)
+    displayMove(puzzle1, "F", newGame)
+    displayMove(puzzle1, "R", newGame)
+    displayMove(puzzle1, "R", newGame)
+    displayMove(puzzle1, "U'", newGame)
+    displayMove(puzzle1, "R'", newGame)
+    displayMove(puzzle1, "U'", newGame)
+    displayMove(puzzle1, "R", newGame)
+    displayMove(puzzle1, "U", newGame)
+    displayMove(puzzle1, "R'", newGame)
+    displayMove(puzzle1, "F'", newGame)
+    #puzzle1.doMove("Z")
+    #puzzle1.doMove("F")
+
 
     while run:
         newGame.allowQuit()

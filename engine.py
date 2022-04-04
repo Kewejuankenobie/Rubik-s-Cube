@@ -70,10 +70,6 @@ class cube:
                 glVertex3fv(self.vertecies[cubeVertex])  # Draw lines between the points inputed
         glEnd()'''
 
-
-    def setColor(self, pieceInList):
-        pass
-
 class game:
     def __init__(self):
         self.canQuit = True
