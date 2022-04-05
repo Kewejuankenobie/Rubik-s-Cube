@@ -21,7 +21,7 @@ class cube:
 
         #Make lines
         self.lines = ((0, 1), (0, 2), (0, 4), (1, 5), (1, 3), (2, 3), (2, 6),
-                 (3, 7), (4, 5), (4, 6), (5, 7), (6, 7))
+                 (3, 7), (4, 5), (4, 6), (5, 7), (6, 7)) #May not need
 
         self.quads = [(0, 1, 5, 4), (1, 3, 7, 5), (0, 1, 3, 2), (4, 5, 7, 6), (0, 2, 6, 4), (2, 3, 7, 6)]
         #create cube at that position
@@ -87,11 +87,15 @@ class game:
         pg.display.flip()  # Updates display
             # pg.time.wait(10) #How often updated
 
-    def allowQuit(self):
-        for event in pg.event.get():  # Adds ability to quit
-            if event.type == pg.QUIT:
+    def loopGame(self):
+        clock = pg.time.Clock()
+        for e in pg.event.get():  # Adds ability to quit and input text
+            if e.type == pg.QUIT:
                 pg.quit()
                 quit()
+        clock.tick(30)
+
+
 
     def makeCube(self, pos, piece):
         self.canQuit = False
@@ -111,7 +115,7 @@ def main():
     newCube = new.makeCube([0, 0, 0], "l")
     new.updateDisplay()
     while True:
-        new.allowQuit()
+        new.loopGame()
 
 if __name__ == "__main__":
     main()

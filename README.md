@@ -37,3 +37,5 @@ Cube is now multicolored, but not shown properly
 3/30 Fixed bug with U, D, and E moves not working, plan on adding cube rotation moves next
 
 4/4 Cube rotations added, can see each rotated side individually
+
+4/5 Realized have to do key inputs with openGL, may switch engine from part pyGame part openGL to only openGL

@@ -9,10 +9,10 @@ def newCube(g, p):
                 g.makeCube([d[0], h[0], l[0]], l[1])
 
 def displayMove(p, m, g):
-    sleep(0.25)
     p.doMove(m)
     newCube(g, p.getState())
     g.updateDisplay()
+    sleep(1)
 
 def main():
     allCubes = False
@@ -21,11 +21,9 @@ def main():
 
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
-    newGame.updateDisplay()
-    sleep(0.25)
 
     #T Perm
-    displayMove(puzzle1, "R", newGame)
+    '''displayMove(puzzle1, "R", newGame)
     displayMove(puzzle1, "U", newGame)
     displayMove(puzzle1, "R'", newGame)
     displayMove(puzzle1, "U'", newGame)
@@ -41,18 +39,17 @@ def main():
     displayMove(puzzle1, "R'", newGame)
     displayMove(puzzle1, "F'", newGame)
     #puzzle1.doMove("Z")
-    #puzzle1.doMove("F")
+    #puzzle1.doMove("F")'''
 
 
     while run:
-        newGame.allowQuit()
+        newGame.loopGame()
+        displayMove(puzzle1, "R", newGame)
+        displayMove(puzzle1, "U", newGame)
+        displayMove(puzzle1, "R'", newGame)
+        displayMove(puzzle1, "U'", newGame)
         #Other code to update
         #This has to be done in the gui or it won't work
-        '''inputMove = input("Enter a Move in the format R, B', E, ect: ")
-        if inputMove == "exit":
-            run = False
-        else:
-            puzzle1.doMove(inputMove)'''
     print("Program Done")
 
 

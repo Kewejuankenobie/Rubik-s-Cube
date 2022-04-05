@@ -78,41 +78,41 @@ class puzzle:
         def getMove(m)-> tuple:
             match m:
                 case "R":
-                    return ((2, 2), -1)
+                    return ([2, 2], -1)
                 case "R'":
-                    return ((2, 2), 1)
+                    return ([2, 2], 1)
                 case "L":
-                    return ((2, 0), 1)
+                    return ([2, 0], 1)
                 case "L'":
-                    return ((2, 0), -1)
+                    return ([2, 0], -1)
                 case "M":
-                    return ((2, 1), 1)
+                    return ([2, 1], 1)
                 case "M'":
-                    return ((2, 1), -1)
+                    return ([2, 1], -1)
                 case "F":
-                    return ((1, 2), -1)
+                    return ([1, 2], -1)
                 case "F'":
-                    return ((1, 2), 1)
+                    return ([1, 2], 1)
                 case "B":
-                    return ((1, 0), 1)
+                    return ([1, 0], 1)
                 case "B'":
-                    return ((1, 0), -1)
+                    return ([1, 0], -1)
                 case "S":
-                    return ((1, 1), 1)
+                    return ([1, 1], 1)
                 case "S'":
-                    return ((1, 1), -1)
+                    return ([1, 1], -1)
                 case "U":
-                    return ((0, 2), 1)
+                    return ([0, 2], 1)
                 case "U'":
-                    return ((0, 2), -1)
+                    return ([0, 2], -1)
                 case "D":
-                    return ((0, 0), -1)
+                    return ([0, 0], -1)
                 case "D'":
-                    return ((0, 0), 1)
+                    return ([0, 0], 1)
                 case "E":
-                    return ((0, 1), -1)
+                    return ([0, 1], -1)
                 case "E'":
-                    return ((0, 1), 1)
+                    return ([0, 1], 1)
                 #Cube Rotations
                 case "X":
                     return ([2, 4], -1)
