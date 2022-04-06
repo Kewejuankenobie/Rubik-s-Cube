@@ -27,7 +27,6 @@ class cube:
         #create cube at that position
 
  # Solid Cube
-        print(p)
         glBegin(GL_QUADS)
         for color in enumerate(p.color):
             match color[1]:
@@ -88,12 +87,10 @@ class game:
             # pg.time.wait(10) #How often updated
 
     def loopGame(self):
-        clock = pg.time.Clock()
         for e in pg.event.get():  # Adds ability to quit and input text
             if e.type == pg.QUIT:
                 pg.quit()
                 quit()
-        clock.tick(30)
 
 
 

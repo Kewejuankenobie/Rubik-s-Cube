@@ -1,4 +1,5 @@
 from puzzle import *
+from InputTK import *
 import engine
 from time import sleep
 
@@ -21,6 +22,8 @@ def main():
 
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
+    inputWindow = window()
+
 
     #T Perm
     '''displayMove(puzzle1, "R", newGame)
@@ -43,14 +46,11 @@ def main():
 
 
     while run:
+        inputWindow.loopInput()
         newGame.loopGame()
         displayMove(puzzle1, "R", newGame)
-        displayMove(puzzle1, "U", newGame)
-        displayMove(puzzle1, "R'", newGame)
-        displayMove(puzzle1, "U'", newGame)
         #Other code to update
         #This has to be done in the gui or it won't work
-    print("Program Done")
 
 
 
