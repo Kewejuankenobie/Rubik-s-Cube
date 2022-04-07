@@ -18,7 +18,6 @@ class puzzle:
 
                 depth.append(height)
             self.cubeMatrix.append(depth)
-        print(self.cubeMatrix)
 
     def getState(self)-> list:
         return self.cubeMatrix
@@ -142,7 +141,6 @@ class puzzle:
             else:
                 side = self.getSide(moveInProgress[0])
                 self.rotateCube(side[0], moveInProgress, side[1])
-            print(self.cubeMatrix)
             #get side, rotate cube, print  right at the end
 
         else:

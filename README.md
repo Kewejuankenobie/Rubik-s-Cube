@@ -41,3 +41,5 @@ Cube is now multicolored, but not shown properly
 4/5 Realized have to do key inputs with openGL, may switch engine from part pyGame part openGL to only openGL
 
 4/6 Scratch previous day, added Tkinter window to recive input from a keyboard
+
+4/7 Now have working virtual cube, but very resource intensive

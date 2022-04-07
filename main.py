@@ -13,7 +13,6 @@ def displayMove(p, m, g):
     p.doMove(m)
     newCube(g, p.getState())
     g.updateDisplay()
-    sleep(1)
 
 def main():
     allCubes = False
@@ -22,6 +21,7 @@ def main():
 
     newGame = engine.game()
     newCube(newGame, puzzle1.getState())
+    newGame.updateDisplay()
     inputWindow = window()
 
 
@@ -46,9 +46,11 @@ def main():
 
 
     while run:
-        inputWindow.loopInput()
+        key = inputWindow.loopInput()
+        if key != None:
+            displayMove(puzzle1, key, newGame)
+            key = None
         newGame.loopGame()
-        displayMove(puzzle1, "R", newGame)
         #Other code to update
         #This has to be done in the gui or it won't work
 
