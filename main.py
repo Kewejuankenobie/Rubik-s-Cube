@@ -15,7 +15,6 @@ def displayMove(p, m, g):
     g.updateDisplay()
 
 def main():
-    allCubes = False
     run = True
     puzzle1 = puzzle(3)
 
@@ -23,37 +22,13 @@ def main():
     newCube(newGame, puzzle1.getState())
     newGame.updateDisplay()
     inputWindow = window()
-
-
-    #T Perm
-    '''displayMove(puzzle1, "R", newGame)
-    displayMove(puzzle1, "U", newGame)
-    displayMove(puzzle1, "R'", newGame)
-    displayMove(puzzle1, "U'", newGame)
-    displayMove(puzzle1, "R'", newGame)
-    displayMove(puzzle1, "F", newGame)
-    displayMove(puzzle1, "R", newGame)
-    displayMove(puzzle1, "R", newGame)
-    displayMove(puzzle1, "U'", newGame)
-    displayMove(puzzle1, "R'", newGame)
-    displayMove(puzzle1, "U'", newGame)
-    displayMove(puzzle1, "R", newGame)
-    displayMove(puzzle1, "U", newGame)
-    displayMove(puzzle1, "R'", newGame)
-    displayMove(puzzle1, "F'", newGame)
-    #puzzle1.doMove("Z")
-    #puzzle1.doMove("F")'''
-
-
+    print("here")
     while run:
-        key = inputWindow.loopInput()
+        key = inputWindow.getInput()
         if key != None:
             displayMove(puzzle1, key, newGame)
             key = None
         newGame.loopGame()
-        #Other code to update
-        #This has to be done in the gui or it won't work
-
 
 
 if __name__ == '__main__':

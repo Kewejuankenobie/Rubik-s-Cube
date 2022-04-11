@@ -95,13 +95,7 @@ class game:
 
 
     def makeCube(self, pos, piece):
-        self.canQuit = False
-        #glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        #glLoadIdentity()
         newCube = cube("test", pos, piece)
-        #pg.display.flip()
-        #glutSwapBuffers()
-        self.canQuit = True
 
     def updateDisplay(self):
         pg.display.flip()

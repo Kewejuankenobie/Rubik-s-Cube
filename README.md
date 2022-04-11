@@ -43,3 +43,5 @@ Cube is now multicolored, but not shown properly
 4/6 Scratch previous day, added Tkinter window to recive input from a keyboard
 
 4/7 Now have working virtual cube, but very resource intensive
+
+4/11 Working on reducing ram usage
