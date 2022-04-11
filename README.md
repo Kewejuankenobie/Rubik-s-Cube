@@ -44,4 +44,4 @@ Cube is now multicolored, but not shown properly
 
 4/7 Now have working virtual cube, but very resource intensive
 
-4/11 Working on reducing ram usage
+4/11 Reduced ram usage from 4 Gigs to 37 Megabytes of ram

@@ -24,6 +24,7 @@ def main():
     inputWindow = window()
     print("here")
     while run:
+        inputWindow.loopWindow()
         key = inputWindow.getInput()
         if key != None:
             displayMove(puzzle1, key, newGame)
