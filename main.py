@@ -1,7 +1,6 @@
 from puzzle import *
-from InputTK import *
+from inputTK import *
 import engine
-from time import sleep
 
 def newCube(g, p):
     for d in enumerate(p):
@@ -22,15 +21,13 @@ def main():
     newCube(newGame, puzzle1.getState())
     newGame.updateDisplay()
     inputWindow = window()
-    print("here")
     while run:
         inputWindow.loopWindow()
-        key = inputWindow.getInput()
+        key = inputWindow.returnInput()
         if key != None:
             displayMove(puzzle1, key, newGame)
             key = None
         newGame.loopGame()
-
 
 if __name__ == '__main__':
     main()

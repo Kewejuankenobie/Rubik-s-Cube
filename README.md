@@ -1,7 +1,9 @@
 # Rubik-s-Cube
 A virtual rubik's cube with the ability to solve, get a tutorial. Made in python.
 
-Before running, Python 3.10.2 is required at a minimum
+Before running, Python 3.10.2 is required at a minimum.
+
+This is a running notebook of the Process.
 
 2/3 Figuring out how to represent cube tiles
 
@@ -45,3 +47,5 @@ Cube is now multicolored, but not shown properly
 4/7 Now have working virtual cube, but very resource intensive
 
 4/11 Reduced ram usage from 4 Gigs to 37 Megabytes of ram
+
+4/14 Commented some code and renamed variables for easier reading

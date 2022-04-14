@@ -1,14 +1,10 @@
-import math
 import pygame as pg
 from pygame.locals import *
-import OpenGL
 from OpenGL.GL import *
-from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 class cube:
-    def __init__(self, type, i, p):
-        self.type = type
+    def __init__(self, i, p):
         self.i = i
         #Make verticies 0 to 1, 1 to 2, 2 to 3
         self.vertecies = [[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0], [0, 0, 1], [1, 0, 1], [0, 1, 1], [1, 1, 1]]
@@ -28,6 +24,7 @@ class cube:
 
  # Solid Cube
         glBegin(GL_QUADS)
+        #Sets color to strings in color list retrived
         for color in enumerate(p.color):
             match color[1]:
                 case "y":
@@ -43,6 +40,8 @@ class cube:
                 case "w":
                     p.color[color[0]] = (1.0, 1.0, 1.0)
         for cubeQuad in enumerate(self.quads):
+            #Sets the color of the quad to a color in the color list depending on position
+            #This works because it renders the colors in a specific order
             match cubeQuad[0]:
                 case 0:
                     glColor3f(p.color[0][0], p.color[0][1], p.color[0][2])  # color
@@ -62,6 +61,7 @@ class cube:
                 glVertex3fv(self.vertecies[cubeVertex])  # Draw quads from points inputed
         glEnd()
 
+        #Extra Line code
         '''glBegin(GL_LINES)  # Tells start gl code and how to handle
         for cubeEdge in self.lines:
             for cubeVertex in cubeEdge:
@@ -70,21 +70,17 @@ class cube:
         glEnd()'''
 
 class game:
+    #Makes pygame window and allows it to use openGL
     def __init__(self):
         self.canQuit = True
         pg.init()
         display = (500, 500)
         pg.display.set_mode(display, DOUBLEBUF | OPENGL)  # Sets display mode to openGL
         gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)  # Sets up Camera
-        glTranslatef(-1, -2, -10)  # Sets translation of the camera
-        glRotatef(60, 0, 1, 0)  # Sets rotation of the camera
+        glTranslatef(-1, -2, -10)
+        glRotatef(60, 0, 1, 0)
         glRotatef(15, 0, 0, 1)
-        #glEnableClientState(GL_COLOR_ARRAY)
-            # glRotatef(1, 3, 1, 1)
-            # glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) #Clears color and depth
-            # cube1 = cube("test", 1)
         pg.display.flip()  # Updates display
-            # pg.time.wait(10) #How often updated
 
     def loopGame(self):
         for e in pg.event.get():  # Adds ability to quit and input text
@@ -93,21 +89,10 @@ class game:
                 quit()
 
 
-
+#Creates new cube
     def makeCube(self, pos, piece):
-        newCube = cube("test", pos, piece)
+        newCube = cube(pos, piece)
 
+#Updates display
     def updateDisplay(self):
         pg.display.flip()
-
-
-def main():
-    new = game()
-    newCube = new.makeCube([0, 0, 0], "l")
-    new.updateDisplay()
-    while True:
-        new.loopGame()
-
-if __name__ == "__main__":
-    main()
-

@@ -1,5 +1,6 @@
-# Tile class as super with different types as a sub class
-#Remake so each piece looks same based on perspective, maybe different states
+# Tile class as each individual piece of the cube
+#Each piece looks same based on perspective, different color list
+#No need for rotation
 class tile:
     # In Radians with the default being front right bottom facing
     def __init__(self, depth, height, length, color):
@@ -9,8 +10,3 @@ class tile:
         self.color = color#Make into list of colors in correct order
     def __repr__(self):
         return str(self.color)
-
-#Rotation, 0 axis is up and down, 1 axis is front and back, 2 axis is left and right
-
-if __name__ == "__main__":
-    print("This is the tile class")

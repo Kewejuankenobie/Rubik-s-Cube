@@ -1,10 +1,9 @@
 # Class describing the puzzle
 from tile import *
 
-#Actual puzzle
 class puzzle:
     seed = 0
-
+    #Makes a puzzle that the computer understands
     def __init__(self, type):
         self.type = type
         self.cubeMatrix = []
@@ -70,7 +69,8 @@ class puzzle:
                 piecesToMove2D.append(piecesToMove)
         return (piecesToMove2D, piecePositionsList)
 
-    def scramble(self, type):
+    #Debating on how to impliment a scramble
+    def scramble(self, type)-> str:
         pass
 
     def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
@@ -157,6 +157,7 @@ class puzzle:
         # F moves 1 to 2, 2 to 6, 6 to 4, 4 to 1
         # Use cube rotation moves for rotating cube, makes easy
 
+        #Sets colors of cube depending on move
         for row in side:
             for piece in row:
                 dupeColor = [c for c in piece.color]
