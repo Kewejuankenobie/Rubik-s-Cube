@@ -49,3 +49,5 @@ Cube is now multicolored, but not shown properly
 4/11 Reduced ram usage from 4 Gigs to 37 Megabytes of ram
 
 4/14 Commented some code and renamed variables for easier reading
+
+4/25 Scramble button added

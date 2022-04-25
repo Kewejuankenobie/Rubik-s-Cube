@@ -7,13 +7,18 @@ class window:
     def __init__(self):
         self.game = Tk()
         self.game.title("Rubix Cube")
-        self.game.geometry("300x50")
+        self.game.geometry("300x75")
         self.m = StringVar()
         self.savedKey = ""
+        self.canScramble = False
         self.isReturnKeyPressed = False
+        moveLabel = Label(self.game, text="Enter A Move: ")
+        moveLabel.grid(row=0, column=0)
         move = Entry(self.game, width=20, textvariable=self.m)
-        move.pack()
+        move.grid(row=0, column=1)
         self.game.bind("<Return>", lambda event: self.updateMove(event, move.get()))
+        scrambleBtn = Button(self.game, text="Scramble", command=self.scrambleCommand)
+        scrambleBtn.grid(row=1,column=1)
         self.game.update()
 
 #Updates Tkinter Window
@@ -30,3 +35,9 @@ class window:
         if self.isReturnKeyPressed:
             self.isReturnKeyPressed = False
             return self.savedKey
+
+    def scrambleCommand(self):
+        self.canScramble = True
+
+    def rmScramble(self):
+        self.canScramble = False

@@ -24,9 +24,15 @@ def main():
     while run:
         inputWindow.loopWindow()
         key = inputWindow.returnInput()
+        scramBool = inputWindow.canScramble
         if key != None:
             displayMove(puzzle1, key, newGame)
             key = None
+        if scramBool:
+            scramStr = puzzle1.scramble()
+            for move in scramStr:
+                displayMove(puzzle1, move, newGame)
+            inputWindow.rmScramble()
         newGame.loopGame()
 
 if __name__ == '__main__':

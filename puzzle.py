@@ -1,5 +1,6 @@
 # Class describing the puzzle
 from tile import *
+import random
 
 class puzzle:
     seed = 0
@@ -70,8 +71,19 @@ class puzzle:
         return (piecesToMove2D, piecePositionsList)
 
     #Debating on how to impliment a scramble
-    def scramble(self, type)-> str:
-        pass
+    def scramble(self)-> list:
+        possibleMoves = "R L F B U D R' L' F' B' U' D'"
+        possibleMoves = possibleMoves.split(" ")
+        scramList = []
+        for i in range(30):
+            moveChoice = random.choice(possibleMoves)
+            if len(scramList) > 1:
+                if moveChoice == scramList[-1] and moveChoice == scramList[-2]:
+                    moveChoice = random.choice(possibleMoves)
+            scramList.append(moveChoice)
+        return scramList
+
+
 
     def doMove(self, move): # Add something so when in 3D space, can do it based on reletive rotation
         def getMove(m)-> tuple:
