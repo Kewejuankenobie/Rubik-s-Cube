@@ -51,3 +51,7 @@ Cube is now multicolored, but not shown properly
 4/14 Commented some code and renamed variables for easier reading
 
 4/25 Scramble button added
+
+4/26 Can input strings of multiple moves (Full algorithms)
+
+4/27 Now can Scramble the cube without undoing previous moves, starting to fix UI

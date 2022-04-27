@@ -70,17 +70,30 @@ class puzzle:
                 piecesToMove2D.append(piecesToMove)
         return (piecesToMove2D, piecePositionsList)
 
-    #Debating on how to impliment a scramble
+    #Scrambles the cube (Generates a list of 25 different moves)
     def scramble(self)-> list:
-        possibleMoves = "R L F B U D R' L' F' B' U' D'"
-        possibleMoves = possibleMoves.split(" ")
         scramList = []
-        for i in range(30):
+        for i in range(25):
+            possibleMoves = "R L F B U D R' L' F' B' U' D'"
+            possibleMoves = possibleMoves.split(" ")
             moveChoice = random.choice(possibleMoves)
+            #Checks weather the move undo's the previous move, then removes from the possible moves
+            if len(scramList) > 0:
+                splitChoice = [c for c in moveChoice]
+                scramSplit = [p for p in scramList[-1]]
+                #Why TF are these so long
+                if "'" in splitChoice and splitChoice[0] == scramSplit[0] and "'" not in scramSplit:
+                    possibleMoves.remove(moveChoice)
+                    moveChoice = random.choice(possibleMoves)
+                elif "'" not in splitChoice and splitChoice[0] == scramSplit[0] and "'" in scramSplit:
+                    possibleMoves.remove(moveChoice)
+                    moveChoice = random.choice(possibleMoves)
+            #Checks if the move is the same as the previous 2, then replaces it with a different move
             if len(scramList) > 1:
-                if moveChoice == scramList[-1] and moveChoice == scramList[-2]:
+                while moveChoice == scramList[-1] and moveChoice == scramList[-2]:
                     moveChoice = random.choice(possibleMoves)
             scramList.append(moveChoice)
+        print(scramList)
         return scramList
 
 
@@ -141,24 +154,28 @@ class puzzle:
         moveList = "R L M F B S U D E X Y Z R' L' M' F' B' S' U' D' E' X' Y' Z'"
         moveList = moveList.split(" ")
         #Get side
-        if move in moveList:
-            moveInProgress = getMove(move)
-            #For Cube Rotation
-            if moveInProgress[0][1] == 4:
-                for s in range(3):
-                    moveInProgress[0][1] = s
+        move = move.split(" ")
+        canDoMove = True
+        for m in move:
+            if m not in moveList:
+                print("Enter a valid move")
+                canDoMove = False
+        if canDoMove:
+            for m in move:
+                moveInProgress = getMove(m)
+                #For Cube Rotation
+                if moveInProgress[0][1] == 4:
+                    for s in range(3):
+                        moveInProgress[0][1] = s
+                        side = self.getSide(moveInProgress[0])
+                        self.rotateCube(side[0], moveInProgress, side[1])
+                #For individual layer
+                else:
                     side = self.getSide(moveInProgress[0])
                     self.rotateCube(side[0], moveInProgress, side[1])
-            #For individual layer
-            else:
-                side = self.getSide(moveInProgress[0])
-                self.rotateCube(side[0], moveInProgress, side[1])
-            #get side, rotate cube, print  right at the end
-
-        else:
-            print("Enter a valid move")
-        #Move side list, change rotation, if = 2pi, change back to 0
-        #Replace original pieces
+                #get side, rotate cube, print  right at the end
+            #Move side list, change rotation, if = 2pi, change back to 0
+            #Replace original pieces
 
     def rotateCube(self, side, dir, pos): # rotates the actual side
         #Rotates Side

@@ -75,6 +75,7 @@ class game:
         self.canQuit = True
         pg.init()
         display = (500, 500)
+        pg.display.set_caption("Python Rubiks Cube")
         pg.display.set_mode(display, DOUBLEBUF | OPENGL)  # Sets display mode to openGL
         gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)  # Sets up Camera
         glTranslatef(-1, -2, -10)
