@@ -55,3 +55,9 @@ Cube is now multicolored, but not shown properly
 4/26 Can input strings of multiple moves (Full algorithms)
 
 4/27 Now can Scramble the cube without undoing previous moves, starting to fix UI
+
+4/28 Decided on a UI idea, need to remodel how the gui works to take into account multiple pages
+
+5/2 Continuing from Before
+
+5/3 Now can switch tabs when clicking the instructions button & move guide button
