@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter.ttk import *
 from PIL import Image, ImageTk
+from pathlib import Path
+import os
 
 
 class window:
@@ -81,7 +83,8 @@ class window:
     def MoveGuide(self):
         mvLabel = Label(self.movG, text="Rubiks Cube Move Guide", font='bold')
         mvLabel.grid(row=0, column=0)
-        fullSolveload = Image.open("Resources/Base.PNG")
+        basePath = Path(__file__).parent
+        fullSolveload = Image.open((basePath / "Resources/Base.PNG").resolve())
         fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG, image=fullSolve)
