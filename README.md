@@ -61,3 +61,5 @@ Cube is now multicolored, but not shown properly
 5/2 Continuing from Before
 
 5/3 Now can switch tabs when clicking the instructions button & move guide button
+
+5/5 Added instructions on how to use the controller, decided on using PIL for the move guide

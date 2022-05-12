@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+import PIL
 
 
 class window:
@@ -67,14 +68,20 @@ class window:
 
 #Program Instructions Page
     def Instructions(self):
-        InLabel = Label(self.inst, text="Placeholder Instructions")
+        InLabel = Label(self.inst, text="How To Use The Controller", font='bold')
         InLabel.grid(row=0, column=0)
+        Label(self.inst, text="Press the scramble button to scramble the cube").grid(row=1, column=0)
+        Label(self.inst, text="This generates a random 25 move scramble").grid(row=2, column=0)
+        Label(self.inst, text="Enter a series of moves separated by a space").grid(row=3, column=0)
+        Label(self.inst, text="This can be one move (R) or many (L' F U)").grid(row=4, column=0)
         bBut1 = Button(self.inst, text="Back", command=lambda: self.switchInt(self.main, self.inst))
-        bBut1.grid(row=1, column=0)
+        bBut1.grid(row=5, column=0)
 
 #Puzzle Move Guide Page
     def MoveGuide(self):
-        mvLabel = Label(self.movG, text="Placeholder Move Guide")
+        mvLabel = Label(self.movG, text="Rubiks Cube Move Guide", font='bold')
         mvLabel.grid(row=0, column=0)
+        fullSolve = PhotoImage(file="Resources/Base.PNG")
+        Label(self.movG, image=fullSolve).grid(row=1, column=0)
         bBut2 = Button(self.movG, text="Back", command=lambda: self.switchInt(self.main, self.movG))
-        bBut2.grid(row=1, column=0)
+        bBut2.grid(row=5, column=0)
