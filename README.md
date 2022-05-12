@@ -63,3 +63,5 @@ Cube is now multicolored, but not shown properly
 5/3 Now can switch tabs when clicking the instructions button & move guide button
 
 5/5 Added instructions on how to use the controller, decided on using PIL for the move guide
+
+5/12 Got an image to show, need to resize properly and add other images, and a scroll bar to keep size of window down

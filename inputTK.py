@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
-import PIL
+from PIL import Image, ImageTk
 
 
 class window:
@@ -9,7 +9,7 @@ class window:
     def __init__(self):
         self.game = Tk()
         self.game.title("Rubix Cube Controller")
-        self.game.geometry("300x200")
+        self.game.geometry("350x200")
         self.main = Frame(self.game)
         self.inst = Frame(self.game)
         self.movG = Frame(self.game)
@@ -81,7 +81,11 @@ class window:
     def MoveGuide(self):
         mvLabel = Label(self.movG, text="Rubiks Cube Move Guide", font='bold')
         mvLabel.grid(row=0, column=0)
-        fullSolve = PhotoImage(file="Resources/Base.PNG")
-        Label(self.movG, image=fullSolve).grid(row=1, column=0)
+        fullSolveload = Image.open("Resources/Base.PNG")
+        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolve = ImageTk.PhotoImage(fullSolveload)
+        solveImg = Label(self.movG, image=fullSolve)
+        solveImg.image = fullSolve
+        solveImg.grid(row=1, column=0)
         bBut2 = Button(self.movG, text="Back", command=lambda: self.switchInt(self.main, self.movG))
         bBut2.grid(row=5, column=0)
