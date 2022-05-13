@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+from tkinter.tix import *
 from PIL import Image, ImageTk
 from pathlib import Path
 import os
@@ -11,13 +12,16 @@ class window:
     def __init__(self):
         self.game = Tk()
         self.game.title("Rubix Cube Controller")
-        self.game.geometry("350x200")
+        self.game.geometry("350x250")
         self.main = Frame(self.game)
         self.inst = Frame(self.game)
         self.movG = Frame(self.game)
+        self.movG2 = Frame(self.game)
+        self.movG3 = Frame(self.game)
         self.MainPage()
         self.Instructions()
         self.MoveGuide()
+        self.MoveGuide2()
         self.main.pack()
 
 #Updates Tkinter Window
@@ -83,12 +87,23 @@ class window:
     def MoveGuide(self):
         mvLabel = Label(self.movG, text="Rubiks Cube Move Guide", font='bold')
         mvLabel.grid(row=0, column=0)
+        Label(self.movG, text="A Rubiks cube move notation is based on layers").grid(row=1, column=0)
+        Label(self.movG, text="Center pieces are in the same location").grid(row=2, column=0)
+        Label(self.movG, text="All other pieces of 2-3 colors move around centers").grid(row=3, column=0)
         basePath = Path(__file__).parent
         fullSolveload = Image.open((basePath / "Resources/Base.PNG").resolve())
         fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG, image=fullSolve)
         solveImg.image = fullSolve
-        solveImg.grid(row=1, column=0)
-        bBut2 = Button(self.movG, text="Back", command=lambda: self.switchInt(self.main, self.movG))
-        bBut2.grid(row=5, column=0)
+        solveImg.grid(row=4, column=0)
+        nBut1 = Button(self.movG, text="Next", command=lambda: self.switchInt(self.movG2, self.movG))
+        nBut1.grid(row=5, column=0)
+
+    def MoveGuide2(self):
+        mvLabel = Label(self.movG2, text="Rubiks Cube Move Guide", font='bold')
+        mvLabel.grid(row=0, column=0)
+        Label(self.movG2, text="An R move for instance rotates the right layer").grid(row=1, column=0)
+
+    def MoveGuide3(self):
+        pass

@@ -65,3 +65,5 @@ Cube is now multicolored, but not shown properly
 5/5 Added instructions on how to use the controller, decided on using PIL for the move guide
 
 5/12 Got an image to show, need to resize properly and add other images, and a scroll bar to keep size of window down
+
+5/13 Decided against scroll bar because it is too complicated for the timeframe I have
