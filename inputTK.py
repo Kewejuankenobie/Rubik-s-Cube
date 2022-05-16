@@ -12,7 +12,8 @@ class window:
     def __init__(self):
         self.game = Tk()
         self.game.title("Rubix Cube Controller")
-        self.game.geometry("350x250")
+        self.game.geometry("350x350")
+        self.basePath = Path(__file__).parent
         self.main = Frame(self.game)
         self.inst = Frame(self.game)
         self.movG = Frame(self.game)
@@ -22,6 +23,7 @@ class window:
         self.Instructions()
         self.MoveGuide()
         self.MoveGuide2()
+        self.MoveGuide3()
         self.main.pack()
 
 #Updates Tkinter Window
@@ -71,6 +73,13 @@ class window:
         self.game.bind("<Return>", lambda event: self.updateMove(event, move.get()))
         scrambleBtn = Button(self.main, text="Scramble Puzzle", command=self.scrambleCommand)
         scrambleBtn.grid(row=3, column=0, padx=20)
+        Label(self.main, text="").grid(row=4, column=0)
+        Label(self.main, text="").grid(row=4, column=1)
+        Label(self.main, text="Rotation Around X:").grid(row=5, column=0)
+        Label(self.main, text="R R\' L L\' M M\'").grid(row=5, column=1)
+        Label(self.main, text="Rotation Around Y:").grid(row=6, column=0)
+        Label(self.main, text="Rotation Around Z:").grid(row=7, column=0)
+        Label(self.main, text="Cube Rotations:").grid(row=8, column=0)
 
 #Program Instructions Page
     def Instructions(self):
@@ -90,8 +99,7 @@ class window:
         Label(self.movG, text="A Rubiks cube move notation is based on layers").grid(row=1, column=0)
         Label(self.movG, text="Center pieces are in the same location").grid(row=2, column=0)
         Label(self.movG, text="All other pieces of 2-3 colors move around centers").grid(row=3, column=0)
-        basePath = Path(__file__).parent
-        fullSolveload = Image.open((basePath / "Resources/Base.PNG").resolve())
+        fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
         fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG, image=fullSolve)
@@ -103,7 +111,43 @@ class window:
     def MoveGuide2(self):
         mvLabel = Label(self.movG2, text="Rubiks Cube Move Guide", font='bold')
         mvLabel.grid(row=0, column=0)
-        Label(self.movG2, text="An R move for instance rotates the right layer").grid(row=1, column=0)
+        Label(self.movG2, text="An R move for instance rotates the right layer 90 degrees").grid(row=1, column=0)
+        Rload = Image.open((self.basePath / "Resources/RMove.PNG").resolve())
+        Rload = Rload.resize((100, 100), Image.ANTIALIAS)
+        RImg = ImageTk.PhotoImage(Rload)
+        RLab = Label(self.movG2, image=RImg)
+        RLab.image = RImg
+        RLab.grid(row=2, column=0)
+        Label(self.movG2, text="VS the original position").grid(row=3, column=0)
+        fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
+        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolve = ImageTk.PhotoImage(fullSolveload)
+        solveImg = Label(self.movG2, image=fullSolve)
+        solveImg.image = fullSolve
+        solveImg.grid(row=4, column=0)
+        nBut2 = Button(self.movG2, text="Next", command=lambda: self.switchInt(self.movG3, self.movG2))
+        nBut2.grid(row=5, column=0)
+
+
 
     def MoveGuide3(self):
-        pass
+        mvLabel = Label(self.movG3, text="Rubiks Cube Move Guide", font='bold')
+        mvLabel.grid(row=0, column=0)
+        Label(self.movG3, text="Adding an apostrophe to R reverses the direction, hence R\'").grid(row=1, column=0)
+        RiLoad = Image.open((self.basePath / "Resources/RiMove.PNG").resolve())
+        RiLoad = RiLoad.resize((100, 100), Image.ANTIALIAS)
+        RiImg = ImageTk.PhotoImage(RiLoad)
+        RiLab = Label(self.movG3, image=RiImg)
+        RiLab.image = RiImg
+        RiLab.grid(row=2, column=0)
+        Label(self.movG3, text="VS the original position").grid(row=3, column=0)
+        fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
+        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolve = ImageTk.PhotoImage(fullSolveload)
+        solveImg = Label(self.movG3, image=fullSolve)
+        solveImg.image = fullSolve
+        solveImg.grid(row=4, column=0)
+        nBut3 = Button(self.movG3, text="Next", command=lambda: self.switchInt(self. main, self.movG3))
+        nBut3.grid(row=5, column=0)
+
+
