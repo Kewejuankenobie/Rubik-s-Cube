@@ -19,11 +19,13 @@ class window:
         self.movG = Frame(self.game)
         self.movG2 = Frame(self.game)
         self.movG3 = Frame(self.game)
+        self.movG4 = Frame(self.game)
         self.MainPage()
         self.Instructions()
         self.MoveGuide()
         self.MoveGuide2()
         self.MoveGuide3()
+        self.MoveGuide4()
         self.main.pack()
 
 #Updates Tkinter Window
@@ -73,13 +75,16 @@ class window:
         self.game.bind("<Return>", lambda event: self.updateMove(event, move.get()))
         scrambleBtn = Button(self.main, text="Scramble Puzzle", command=self.scrambleCommand)
         scrambleBtn.grid(row=3, column=0, padx=20)
-        Label(self.main, text="").grid(row=4, column=0)
+        Label(self.main, text="Move Reference").grid(row=4, column=0, pady=20)
         Label(self.main, text="").grid(row=4, column=1)
         Label(self.main, text="Rotation Around X:").grid(row=5, column=0)
         Label(self.main, text="R R\' L L\' M M\'").grid(row=5, column=1)
         Label(self.main, text="Rotation Around Y:").grid(row=6, column=0)
+        Label(self.main, text="U U\' D D\' E E\'").grid(row=6, column=1)
         Label(self.main, text="Rotation Around Z:").grid(row=7, column=0)
+        Label(self.main, text="F F\' B B\' S S\'").grid(row=7, column=1)
         Label(self.main, text="Cube Rotations:").grid(row=8, column=0)
+        Label(self.main, text="X X\' Y Y\' Z Z\'").grid(row=8, column=1)
 
 #Program Instructions Page
     def Instructions(self):
@@ -89,7 +94,7 @@ class window:
         Label(self.inst, text="This generates a random 25 move scramble").grid(row=2, column=0)
         Label(self.inst, text="Enter a series of moves separated by a space").grid(row=3, column=0)
         Label(self.inst, text="This can be one move (R) or many (L' F U)").grid(row=4, column=0)
-        bBut1 = Button(self.inst, text="Back", command=lambda: self.switchInt(self.main, self.inst))
+        bBut1 = Button(self.inst, text="Return To Controller", command=lambda: self.switchInt(self.main, self.inst))
         bBut1.grid(row=5, column=0)
 
 #Puzzle Move Guide Page
@@ -147,7 +152,19 @@ class window:
         solveImg = Label(self.movG3, image=fullSolve)
         solveImg.image = fullSolve
         solveImg.grid(row=4, column=0)
-        nBut3 = Button(self.movG3, text="Next", command=lambda: self.switchInt(self. main, self.movG3))
+        nBut3 = Button(self.movG3, text="Next", command=lambda: self.switchInt(self.movG4, self.movG3))
         nBut3.grid(row=5, column=0)
 
-
+    def MoveGuide4(self):
+        mvLabel = Label(self.movG4, text="Rubiks Cube Move Guide", font='bold')
+        mvLabel.grid(row=0, column=0)
+        Label(self.movG4, text="X axis moves:").grid(row=1, column=0)
+        Label(self.movG4, text="R: Right layer, L: Left layer, M: Layer between R and L").grid(row=2, column=0)
+        Label(self.movG4, text="Y axis moves:").grid(row=3, column=0)
+        Label(self.movG4, text="U: Top layer, D: Bottom layer, E: Layer between U and D").grid(row=4, column=0)
+        Label(self.movG4, text="Z axis moves:").grid(row=5, column=0)
+        Label(self.movG4, text="F: Front layer, B: Back layer, S: Layer between F and B").grid(row=6, column=0)
+        Label(self.movG4, text="Cube rotations:").grid(row=7, column=0)
+        Label(self.movG4, text="X: X axis rotation, Y: Y axis rotation, Z: Z axis rotation").grid(row=8, column=0)
+        nBut4 = Button(self.movG4, text="Return to Controller", command=lambda: self.switchInt(self.main, self.movG4))
+        nBut4.grid(row=9, column=0)
