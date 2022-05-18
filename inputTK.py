@@ -1,9 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
-from tkinter.tix import *
 from PIL import Image, ImageTk
 from pathlib import Path
-import os
 
 #New Tkinter Window
 class window:
