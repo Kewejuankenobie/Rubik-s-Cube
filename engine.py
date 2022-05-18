@@ -61,14 +61,6 @@ class cube:
                 glVertex3fv(self.vertecies[cubeVertex])  # Draw quads from points inputed
         glEnd()
 
-        #Extra Line code
-        '''glBegin(GL_LINES)  # Tells start gl code and how to handle
-        for cubeEdge in self.lines:
-            for cubeVertex in cubeEdge:
-                glColor(0, 0, 0)
-                glVertex3fv(self.vertecies[cubeVertex])  # Draw lines between the points inputed
-        glEnd()'''
-
 class game:
     #Makes pygame window and allows it to use openGL
     def __init__(self):

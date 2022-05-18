@@ -66,3 +66,5 @@ Cube is now multicolored, but not shown properly
 5/16 Made more instructions
 
 5/17 Finished the instructions, moved the running journal from README.md to Running_Journal.md
+
+5/18 Commented Code

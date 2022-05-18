@@ -2,17 +2,20 @@ from puzzle import *
 from inputTK import *
 import engine
 
+#Makes new cube
 def newCube(g, p):
     for d in enumerate(p):
         for h in enumerate(d[1]):
             for l in enumerate(h[1]):
                 g.makeCube([d[0], h[0], l[0]], l[1])
 
+#Displayes move on screen
 def displayMove(p, m, g):
     p.doMove(m)
     newCube(g, p.getState())
     g.updateDisplay()
 
+#Main function
 def main():
     run = True
     puzzle1 = puzzle(3)
