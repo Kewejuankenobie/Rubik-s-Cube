@@ -68,3 +68,5 @@ Cube is now multicolored, but not shown properly
 5/17 Finished the instructions, moved the running journal from README.md to Running_Journal.md
 
 5/18 Commented Code
+
+5/20 Added image of the xyz coordinate system used in the program
