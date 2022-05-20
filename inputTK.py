@@ -87,6 +87,12 @@ class window:
         Label(self.main, text="F F\' B B\' S S\'").grid(row=7, column=1)
         Label(self.main, text="Cube Rotations:").grid(row=8, column=0)
         Label(self.main, text="X X\' Y Y\' Z Z\'").grid(row=8, column=1)
+        Cload = Image.open((self.basePath / "Resources/Coord.PNG").resolve())
+        Cload = Cload.resize((70, 70), Image.ANTIALIAS)
+        CFin = ImageTk.PhotoImage(Cload)
+        CImg = Label(self.main, image=CFin)
+        CImg.image = CFin
+        CImg.grid(row=9, column=1)
 
 #Controller Instructions Page
     def Instructions(self):
@@ -173,5 +179,11 @@ class window:
         Label(self.movG4, text="F: Front layer, B: Back layer, S: Layer between F and B").grid(row=7, column=0)
         Label(self.movG4, text="Cube rotations:").grid(row=8, column=0)
         Label(self.movG4, text="X: X axis rotation, Y: Y axis rotation, Z: Z axis rotation").grid(row=9, column=0)
+        Cload = Image.open((self.basePath / "Resources/Coord.PNG").resolve())
+        Cload = Cload.resize((100, 100), Image.ANTIALIAS)
+        CFin = ImageTk.PhotoImage(Cload)
+        CImg = Label(self.movG4, image=CFin)
+        CImg.image = CFin
+        CImg.grid(row=10, column=0)
         nBut4 = Button(self.movG4, text="Return to Controller", command=lambda: self.switchInt(self.main, self.movG4))
-        nBut4.grid(row=10, column=0)
+        nBut4.grid(row=11, column=0)
