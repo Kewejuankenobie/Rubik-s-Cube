@@ -88,7 +88,7 @@ class window:
         Label(self.main, text="Cube Rotations:").grid(row=8, column=0)
         Label(self.main, text="X X\' Y Y\' Z Z\'").grid(row=8, column=1)
         Cload = Image.open((self.basePath / "Resources/Coord.PNG").resolve())
-        Cload = Cload.resize((70, 70), Image.ANTIALIAS)
+        Cload = Cload.resize((70, 70), Image.LANCZOS)
         CFin = ImageTk.PhotoImage(Cload)
         CImg = Label(self.main, image=CFin)
         CImg.image = CFin
@@ -115,7 +115,7 @@ class window:
         Label(self.movG, text="All other pieces of 2-3 colors move around centers").grid(row=3, column=0)
         #Loads an image in the Resources folder
         fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
-        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolveload = fullSolveload.resize((100, 100), Image.LANCZOS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG, image=fullSolve)
         solveImg.image = fullSolve
@@ -130,14 +130,14 @@ class window:
         mvLabel.grid(row=0, column=0)
         Label(self.movG2, text="An R move for instance rotates the right layer 90 degrees").grid(row=1, column=0)
         Rload = Image.open((self.basePath / "Resources/RMove.PNG").resolve())
-        Rload = Rload.resize((100, 100), Image.ANTIALIAS)
+        Rload = Rload.resize((100, 100), Image.LANCZOS)
         RImg = ImageTk.PhotoImage(Rload)
         RLab = Label(self.movG2, image=RImg)
         RLab.image = RImg
         RLab.grid(row=2, column=0)
         Label(self.movG2, text="VS the original position").grid(row=3, column=0)
         fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
-        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolveload = fullSolveload.resize((100, 100), Image.LANCZOS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG2, image=fullSolve)
         solveImg.image = fullSolve
@@ -151,14 +151,14 @@ class window:
         mvLabel.grid(row=0, column=0)
         Label(self.movG3, text="Adding an apostrophe to R reverses the direction, hence R\'").grid(row=1, column=0)
         RiLoad = Image.open((self.basePath / "Resources/RiMove.PNG").resolve())
-        RiLoad = RiLoad.resize((100, 100), Image.ANTIALIAS)
+        RiLoad = RiLoad.resize((100, 100), Image.LANCZOS)
         RiImg = ImageTk.PhotoImage(RiLoad)
         RiLab = Label(self.movG3, image=RiImg)
         RiLab.image = RiImg
         RiLab.grid(row=2, column=0)
         Label(self.movG3, text="VS the original position").grid(row=3, column=0)
         fullSolveload = Image.open((self.basePath / "Resources/Base.PNG").resolve())
-        fullSolveload = fullSolveload.resize((100, 100), Image.ANTIALIAS)
+        fullSolveload = fullSolveload.resize((100, 100), Image.LANCZOS)
         fullSolve = ImageTk.PhotoImage(fullSolveload)
         solveImg = Label(self.movG3, image=fullSolve)
         solveImg.image = fullSolve
@@ -180,7 +180,7 @@ class window:
         Label(self.movG4, text="Cube rotations:").grid(row=8, column=0)
         Label(self.movG4, text="X: X axis rotation, Y: Y axis rotation, Z: Z axis rotation").grid(row=9, column=0)
         Cload = Image.open((self.basePath / "Resources/Coord.PNG").resolve())
-        Cload = Cload.resize((100, 100), Image.ANTIALIAS)
+        Cload = Cload.resize((100, 100), Image.LANCZOS)
         CFin = ImageTk.PhotoImage(Cload)
         CImg = Label(self.movG4, image=CFin)
         CImg.image = CFin
