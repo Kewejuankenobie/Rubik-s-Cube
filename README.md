@@ -16,6 +16,6 @@ Libraries can be installed with pip
 Make sure all are installed before running the program
 
 To run, enter the project folder and enter:
-'''
+```
 python main.py
-''' 
+``` 
